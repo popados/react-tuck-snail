@@ -1,0 +1,248 @@
+<title>Tuck Palette Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one reading column; each change is a before/after strip; specimens show light and dark side by side. Colors are Tuck's own tokens. */
+:root{
+  --canvas:#eef0ea; --surface:#ffffff; --ink:#1f2a24; --muted:#4a5750; --line:#1f2a24;
+  --accent:#8a5530; --wash:#efd2b8; --soft:#e4e7df;
+  --sans:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --canvas:#161e1a; --surface:#1f2a24; --ink:#e6eee3; --muted:#9fb39a; --line:#3a4a41;
+  --accent:#f0c49e; --wash:#5a4330; --soft:#24302a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --canvas:#161e1a; --surface:#1f2a24; --ink:#e6eee3; --muted:#9fb39a; --line:#3a4a41;
+  --accent:#f0c49e; --wash:#5a4330; --soft:#24302a; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;padding-inline:16px;padding-block:40px 64px}
+main{max-width:920px;margin:0 auto;display:grid;gap:48px}
+h1,h2,h3{text-wrap:balance;margin:0;font-weight:800}
+h1{font-size:clamp(34px,6vw,52px);line-height:1.02}
+h2{font-size:26px;line-height:1.15}
+h3{font-size:18px;font-weight:600}
+p{margin:0;max-width:65ch}
+code,.mono{font-family:var(--mono);font-size:.9em}
+a{color:var(--accent)}
+.eyebrow{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.lead{font-size:18px;color:var(--muted)}
+header{display:grid;gap:12px}
+section{display:grid;gap:20px}
+.note{font-size:14px;color:var(--muted)}
+/* swatch grid */
+.sw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.sw{background:var(--surface);border:2px solid var(--line);border-radius:14px;overflow:hidden;display:grid;min-width:0}
+.sw .chips{display:grid;grid-template-columns:1fr 1fr;height:56px}
+.sw .chips span{display:block}
+.sw .meta{padding:8px 10px;display:grid;gap:2px;font-size:13px}
+.sw .meta b{font-family:var(--mono);font-weight:600;font-size:13px}
+.sw .meta small{font-family:var(--mono);color:var(--muted);font-size:11.5px}
+.sw.one .chips{grid-template-columns:1fr}
+/* change cards */
+.changes{display:grid;gap:16px}
+.chg{background:var(--surface);border:2px solid var(--line);border-radius:20px;padding:20px 24px;display:grid;gap:12px}
+.chg-top{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.tag{font-family:var(--mono);font-size:12px;padding:2px 8px;border-radius:999px;background:var(--wash);color:var(--ink)}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ba>div{display:grid;gap:6px;min-width:0}
+.ba .lbl{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.demo{border-radius:12px;padding:12px 14px;font-size:15px;display:grid;gap:4px;border:2px solid transparent}
+.num{font-family:var(--mono);font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+/* specimens: deliberate fixed-color mockups, each sets its own bg and fg */
+.spec{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.phone{border-radius:28px;padding:20px;display:grid;gap:14px;border:2px solid #1f2a24}
+.phone.l{background:#eef0ea;color:#1f2a24}
+.phone.d{background:#161e1a;color:#e6eee3;border-color:#3a4a41}
+.phone h4{margin:0;font-size:22px;font-weight:800;line-height:1.15}
+.phone .cap{font-size:13px}
+.chips2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mc{font-family:var(--mono);font-size:14px;height:46px;border-radius:14px;display:flex;align-items:center;padding:0 12px;border:2px solid}
+.mc.full{grid-column:1/-1}
+.l .mc{background:#fff;border-color:#1f2a24}
+.d .mc{background:#1f2a24;border-color:#e6eee3}
+.l .mc.sel{background:#efd2b8;border-width:3px}
+.d .mc.sel{background:#5a4330;border-width:3px}
+.banner{border-radius:14px;padding:10px 12px;font-size:14px}
+.bars{display:flex;gap:8px;align-items:flex-end;height:90px;padding-top:6px}
+.bars span{flex:1;border-radius:6px 6px 0 0;border:2px solid;border-bottom:none}
+.l .bars span{border-color:#1f2a24}
+.d .bars span{border-color:#e6eee3}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;font-family:var(--mono);font-size:12px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-1px;border:1.5px solid currentColor}
+/* table */
+.tbl{overflow-x:auto;border:2px solid var(--line);border-radius:20px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:14px}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--soft);vertical-align:top}
+th{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:400}
+tr:last-child td{border-bottom:none}
+td.c{font-family:var(--mono);white-space:nowrap;font-variant-numeric:tabular-nums}
+.dot{display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:-2px;margin-right:6px;border:1.5px solid var(--line)}
+.new{font-family:var(--mono);font-size:11px;color:var(--accent);margin-left:6px}
+/* terminal */
+.term{background:#1f2a24;border-radius:16px;border:2px solid #3a4a41;overflow:hidden;font-family:var(--mono);font-size:14px;color:#e6eee3}
+.term .bar{background:#2a3830;padding:10px 14px;display:flex;gap:8px;align-items:center}
+.term .bar i{width:11px;height:11px;border-radius:50%;display:block}
+.term .bar small{margin-left:8px;color:#b9ccb2;font-size:12px}
+.term pre{margin:0;padding:16px 18px;white-space:pre-wrap;line-height:1.65;overflow-x:auto}
+.ansi{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;padding:0 18px 18px}
+.ansi div{display:flex;gap:8px;align-items:center;font-size:12px;color:#b9ccb2}
+.ansi b{width:18px;height:18px;border-radius:5px;flex:none}
+ol.plan{margin:0;padding-left:22px;display:grid;gap:8px;max-width:65ch}
+@media (max-width:640px){.spec,.ba{grid-template-columns:1fr}}
+</style>
+
+<main>
+<header>
+  <div class="eyebrow">Tuck the Snail · design system · palette review</div>
+  <h1>Palette changes for light and dark</h1>
+  <p class="lead">Extracted from the design system's <code>tokens.json</code> (21 color tokens, two themes), checked for contrast, then tuned. Tuck's art colors stay put. The changes fix three weak spots in dark mode and add the colors a mood tracker still lacks: a mood scale for insights, gentle notices with no red, and a terminal color set.</p>
+</header>
+
+<section>
+  <h2>What the system has today</h2>
+  <p class="note">Each swatch shows light on the left and dark on the right. A single block means the color is the same in both themes.</p>
+  <div class="sw-grid" id="current"></div>
+</section>
+
+<section>
+  <h2>Six changes, in priority order</h2>
+  <div class="changes">
+
+    <article class="chg">
+      <div class="chg-top"><h3>1. Give dark-mode links a color of their own</h3><span class="tag">link · new caramel-text</span></div>
+      <p>Dark <code>link</code> (#a9c9a0) and <code>ink-muted</code> (#b9ccb2) are 1.07:1 apart, so links only differ by the underline. Add a <code>caramel-text</code> token, Tuck's shell as a readable text color, and point <code>link</code> at it in both themes. Links become "the shell color" everywhere.</p>
+      <div class="ba">
+        <div><span class="lbl">Now (dark)</span><div class="demo" style="background:#161e1a;color:#b9ccb2">Data stays on this device. <span style="color:#a9c9a0;text-decoration:underline">How it works</span></div><span class="num">link on canvas 9.35 · vs muted 1.07</span></div>
+        <div><span class="lbl">Proposed (dark)</span><div class="demo" style="background:#161e1a;color:#9fb39a">Data stays on this device. <span style="color:#f0c49e;text-decoration:underline">How it works</span></div><span class="num">#f0c49e on canvas 10.61 · on surface 9.25</span></div>
+        <div><span class="lbl">Now (light)</span><div class="demo" style="background:#eef0ea;color:#4a5750">Data stays on this device. <span style="color:#2f5d46;text-decoration:underline">How it works</span></div><span class="num">link on canvas 6.59</span></div>
+        <div><span class="lbl">Proposed (light)</span><div class="demo" style="background:#eef0ea;color:#4a5750">Data stays on this device. <span style="color:#8a5530;text-decoration:underline">How it works</span></div><span class="num">#8a5530 on canvas 5.34 · on surface 6.14</span></div>
+      </div>
+    </article>
+
+    <article class="chg">
+      <div class="chg-top"><h3>2. Make dark muted text actually muted</h3><span class="tag">ink-muted · dark only</span></div>
+      <p>In dark mode <code>ink</code> is 14.3:1 and <code>ink-muted</code> is 10:1, so captions and body text look nearly the same. Drop dark <code>ink-muted</code> to #9fb39a. It still passes AA comfortably and restores the hierarchy. Keep <code>term-dim</code> as is; the terminal reads differently.</p>
+      <div class="ba">
+        <div><span class="lbl">Now</span><div class="demo" style="background:#161e1a;color:#e6eee3"><b>How are you today?</b><span style="color:#b9ccb2;font-size:13px">Stored on this device only.</span></div><span class="num">#b9ccb2 · 10.0 on canvas</span></div>
+        <div><span class="lbl">Proposed</span><div class="demo" style="background:#161e1a;color:#e6eee3"><b>How are you today?</b><span style="color:#9fb39a;font-size:13px">Stored on this device only.</span></div><span class="num">#9fb39a · 7.60 on canvas · 6.64 on surface</span></div>
+      </div>
+    </article>
+
+    <article class="chg">
+      <div class="chg-top"><h3>3. Make the selected mood chip easy to see</h3><span class="tag">caramel-wash · both themes</span></div>
+      <p>The selected wash is only 1.26:1 (light) and 1.37:1 (dark) against an unselected chip, so the choice is easy to miss. Deepen the wash a step and give the selected chip a 3px outline, so the state never rests on fill alone.</p>
+      <div class="ba">
+        <div><span class="lbl">Now</span><div class="demo" style="background:#fff;color:#1f2a24;border-color:#1f2a24"><span class="mono">@_^^ good</span></div><div class="demo" style="background:#f3e2d3;color:#1f2a24;border-color:#1f2a24"><span class="mono">@_oo okay · selected</span></div><span class="num">#f3e2d3 / dark #4a3a2c</span></div>
+        <div><span class="lbl">Proposed</span><div class="demo" style="background:#fff;color:#1f2a24;border-color:#1f2a24"><span class="mono">@_^^ good</span></div><div class="demo" style="background:#efd2b8;color:#1f2a24;border:3px solid #1f2a24"><span class="mono">@_oo okay · selected</span></div><span class="num">#efd2b8 (ink 10.3) / dark #5a4330 (ink 7.76)</span></div>
+      </div>
+    </article>
+
+    <article class="chg">
+      <div class="chg-top"><h3>4. Dim the art plate in dark mode</h3><span class="tag">art-ground · dark only</span></div>
+      <p>Tuck's art sits on a #eef0ea plate in dark mode, a near-white rectangle that glows inside dark cards, which is a lot at 1:40am. #d9dfd4 keeps the fixed dark outlines at 10.9:1 and sits calmer on the page.</p>
+      <div class="ba">
+        <div><span class="lbl">Now</span><div class="demo" style="background:#1f2a24;padding:14px"><div style="background:#eef0ea;border-radius:12px;height:64px;display:grid;place-items:center;font-family:var(--mono);color:#1f2a24;font-size:22px">@_--</div></div><span class="num">plate 12.9 against surface</span></div>
+        <div><span class="lbl">Proposed</span><div class="demo" style="background:#1f2a24;padding:14px"><div style="background:#d9dfd4;border-radius:12px;height:64px;display:grid;place-items:center;font-family:var(--mono);color:#1f2a24;font-size:22px">@_--</div></div><span class="num">#d9dfd4 · outlines 10.9</span></div>
+      </div>
+    </article>
+
+    <article class="chg">
+      <div class="chg-top"><h3>5. Add a mood scale for insights</h3><span class="tag">5 new tokens · same in both themes</span></div>
+      <p>Insights charts have no colors yet. These five come from Tuck's own palette, step down in lightness from good to low so they read in grayscale and for color-blind users, and never use red. "Low" is a calm slate blue. Bars carry the brand's ink outline, so pastel fills still separate from the ground, and labels always pair with the ASCII face.</p>
+      <div class="sw-grid" id="mood"></div>
+      <p class="note">Tired (#7a9fbf) and shell day (#d69a6a) are close in lightness; they stay apart by hue (blue vs orange) and by their faces, <code>@_--</code> and <code>(@)</code>.</p>
+    </article>
+
+    <article class="chg">
+      <div class="chg-top"><h3>6. Add gentle notices, and map the terminal's colors</h3><span class="tag">3 notice pairs · 16 ANSI slots</span></div>
+      <p>Saved, synced and "back up your data" messages need a home that is not red. Three washes with <code>ink</code> text cover them: <code>moss-wash</code> for done, <code>butter-wash</code> for needs a look, <code>tear-wash</code> for information. In <code>tuckshell</code>, the ANSI red slot becomes <code>blush</code>, so any tool that prints "error red" still looks like Tuck.</p>
+      <div class="sw-grid" id="notice"></div>
+    </article>
+  </div>
+</section>
+
+<section>
+  <h2>Side by side</h2>
+  <p class="note">A check-in screen and a week of insights with every proposed change applied.</p>
+  <div class="spec">
+    <div class="phone l">
+      <div class="cap" style="color:#4a5750;letter-spacing:.12em">LIGHT</div>
+      <h4>How are you today?</h4>
+      <div class="chips2">
+        <div class="mc">@_^^ good</div><div class="mc sel">@_oo okay</div>
+        <div class="mc">@_-- tired</div><div class="mc">@_;; low</div>
+        <div class="mc full">(@) shell day</div>
+      </div>
+      <div class="banner" style="background:#e8f0e4">saved. small check-ins count.</div>
+      <div class="bars"><span style="height:70%;background:#e3c46b"></span><span style="height:55%;background:#9dbb94"></span><span style="height:40%;background:#7a9fbf"></span><span style="height:25%;background:#56738c"></span><span style="height:60%;background:#9dbb94"></span><span style="height:35%;background:#d69a6a"></span><span style="height:75%;background:#e3c46b"></span></div>
+      <div class="cap" style="color:#4a5750">Stored on this device only. <span style="color:#8a5530;text-decoration:underline">Crisis line: 988</span></div>
+    </div>
+    <div class="phone d">
+      <div class="cap" style="color:#9fb39a;letter-spacing:.12em">DARK</div>
+      <h4>How are you today?</h4>
+      <div class="chips2">
+        <div class="mc">@_^^ good</div><div class="mc sel">@_oo okay</div>
+        <div class="mc">@_-- tired</div><div class="mc">@_;; low</div>
+        <div class="mc full">(@) shell day</div>
+      </div>
+      <div class="banner" style="background:#2c3a2a">saved. small check-ins count.</div>
+      <div class="bars"><span style="height:70%;background:#e3c46b"></span><span style="height:55%;background:#9dbb94"></span><span style="height:40%;background:#7a9fbf"></span><span style="height:25%;background:#56738c"></span><span style="height:60%;background:#9dbb94"></span><span style="height:35%;background:#d69a6a"></span><span style="height:75%;background:#e3c46b"></span></div>
+      <div class="cap" style="color:#9fb39a">Stored on this device only. <span style="color:#f0c49e;text-decoration:underline">Crisis line: 988</span></div>
+    </div>
+  </div>
+
+  <div class="term">
+    <div class="bar"><i style="background:#e8a9a0"></i><i style="background:#e3c46b"></i><i style="background:#9dbb94"></i><small>~/tuck</small></div>
+<pre>$ tuckshell log walk
+<span style="color:#f0c49e">@_^^</span>  walk logged. <span style="color:#9dbb94">that's 3 this week.</span>
+$ tuckshell sync
+<span style="color:#f0c49e">@_oo</span>  <span style="color:#e3c46b">no backup in 30 days.</span> <span style="color:#8a9b90"># tuckshell export</span>
+$ tuckshell oops
+<span style="color:#f0c49e">@_;;</span>  <span style="color:#e8a9a0">i don't know that one.</span> try <span style="color:#8fb8d8">tuckshell help</span>?</pre>
+    <div class="ansi" id="ansi"></div>
+  </div>
+</section>
+
+<section>
+  <h2>Full proposed palette</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Token</th><th>Light</th><th>Dark</th><th>Change</th></tr></thead>
+    <tbody id="full"></tbody>
+  </table></div>
+  <p class="note">Contrast is WCAG 2 ratio, measured against <code>canvas</code> and <code>surface</code> in each theme. Every text pairing is 4.5:1 or better. The full set is saved as <code>design-palettes/proposed-tokens.json</code> in the project files, ready to apply to the design system.</p>
+</section>
+
+<section>
+  <h2>What stays the same</h2>
+  <p>Caramel, moss, blush, butter and tear, the terminal ground, canvas and surface in both themes, and the "borders, not shadows" rule. The palette is still warm and calm, with no pastel purple and no red failure state on any surface.</p>
+</section>
+</main>
+
+<script>
+const cur=[
+ ["canvas","#eef0ea","#161e1a"],["surface","#ffffff","#1f2a24"],["ink","#1f2a24","#e6eee3"],["ink-muted","#4a5750","#b9ccb2"],
+ ["link","#2f5d46","#a9c9a0"],["caramel","#d69a6a"],["on-caramel","#1f2a24"],["caramel-deep","#bb895f"],
+ ["caramel-wash","#f3e2d3","#4a3a2c"],["moss","#9dbb94"],["blush","#e8a9a0"],["butter","#e3c46b"],["tear","#8fb8d8"],
+ ["ground-shadow","#e4e5e4","#121915"],["art-ground","#ffffff","#eef0ea"],["term-bar","#2a3830"],["term-bg","#1f2a24"],
+ ["term-edge","#1f2a24","#3a4a41"],["term-text","#e6eee3"],["term-dim","#b9ccb2"],["term-tuck","#f0c49e"]];
+const mood=[["mood-good","#e3c46b","@_^^ · L* 80"],["mood-okay","#9dbb94","@_oo · L* 73"],["mood-tired","#7a9fbf","@_-- · L* 64"],["mood-low","#56738c","@_;; · L* 48"],["mood-shell","#d69a6a","(@) · L* 68"]];
+const notice=[["moss-wash","#e8f0e4","#2c3a2a","done · ink 12.7 / 10.1"],["butter-wash","#f8efcf","#3d3720","needs a look · 12.9 / 10.0"],["tear-wash","#e3eef6","#23323d","info · 12.6 / 11.1"]];
+function sw(n,a,b,sub){const one=!b;return `<div class="sw${one?' one':''}"><div class="chips"><span style="background:${a}"></span>${one?'':`<span style="background:${b}"></span>`}</div><div class="meta"><b>${n}</b><small>${one?a:a+' / '+b}</small>${sub?`<small>${sub}</small>`:''}</div></div>`}
+document.getElementById('current').innerHTML=cur.map(c=>sw(c[0],c[1],c[2])).join('');
+document.getElementById('mood').innerHTML=mood.map(c=>sw(c[0],c[1],null,c[2])).join('');
+document.getElementById('notice').innerHTML=notice.map(c=>sw(c[0],c[1],c[2],c[3])).join('');
+const ansi=[["black","#1f2a24"],["red → blush","#e8a9a0"],["green → moss","#9dbb94"],["yellow → butter","#e3c46b"],["blue → tear","#8fb8d8"],["magenta → caramel","#d69a6a"],["cyan → sage","#8fc4b8"],["white","#e6eee3"],
+ ["br black (5.07)","#8a9b90"],["br red","#f0c4bd"],["br green","#b9ccb2"],["br yellow","#f0d898"],["br blue","#b5d0e6"],["br magenta","#f0c49e"],["br cyan","#b5dcd2"],["br white","#ffffff"]];
+document.getElementById('ansi').innerHTML=ansi.map(a=>`<div><b style="background:${a[1]};${a[1]=='#1f2a24'?'outline:1px solid #3a4a41':''}"></b>${a[0]}</div>`).join('');
+const full=[
+ ["canvas","#eef0ea","#161e1a",""],["surface","#ffffff","#1f2a24",""],["ink","#1f2a24","#e6eee3",""],
+ ["ink-muted","#4a5750","#9fb39a","dark 10.0 → 7.60"],["caramel-text","#8a5530","#f0c49e","new · 5.34 / 10.61"],
+ ["link","{caramel-text}","{caramel-text}","now distinct from muted"],["caramel-wash","#efd2b8","#5a4330","deeper; + 3px outline"],
+ ["art-ground","#ffffff","#d9dfd4","dark plate dimmed"],["mood-good","#e3c46b","#e3c46b","new"],["mood-okay","#9dbb94","#9dbb94","new"],
+ ["mood-tired","#7a9fbf","#7a9fbf","new"],["mood-low","#56738c","#56738c","new"],["mood-shell","#d69a6a","#d69a6a","new"],
+ ["moss-wash","#e8f0e4","#2c3a2a","new"],["butter-wash","#f8efcf","#3d3720","new"],["tear-wash","#e3eef6","#23323d","new"],
+ ["term-faint","#8a9b90","#8a9b90","new · 5.07 on term-bg"]];
+const dot=v=>v.startsWith('#')?`<span class="dot" style="background:${v}"></span>`:'';
+document.getElementById('full').innerHTML=full.map(r=>`<tr><td class="c">${r[0]}${r[3].startsWith('new')?'<span class="new">new</span>':''}</td><td class="c">${dot(r[1])}${r[1]}</td><td class="c">${dot(r[2])}${r[2]}</td><td>${r[3].replace(/^new ?·? ?/,'')}</td></tr>`).join('');
+</script>
