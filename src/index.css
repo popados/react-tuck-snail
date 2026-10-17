@@ -14,149 +14,315 @@
 }
 
 /*
- * Fieldnote design tokens. Source of truth: docs/design-system/tokens.json.
+ * Tuck the Snail design tokens. Source of truth: docs/tuck-design-system.md.
  * Raw values live in CSS variables so the dark theme can swap them; the
- * @theme block below maps them to Tailwind utilities (bg-paper, text-ink,
- * rounded-md, text-heading-lg, min-h-control, max-w-card, ...).
+ * @theme blocks below map them to Tailwind utilities (bg-canvas, text-ink,
+ * border-ink, rounded-lg, text-heading, font-mono, p-24, gap-10, ...).
+ * Tuck's art colors, the mood scale and the terminal are the same in both themes.
  */
 :root {
   color-scheme: light;
-  --paper: #faf7f0;
-  --paper-deep: #efeae0;
-  --hairline: #e2dccf;
-  --ink: #1c1b19;
-  --graphite: #5f5b53;
-  --rule: #8a857b;
-  --moss: #2f5d50;
-  --on-moss: #ffffff;
-  --moss-soft: #e3ede8;
-  --error: #b42318;
-  --error-soft: #fbeae7;
-  --highlighter: #f2c94c;
-  --on-highlighter: #1c1b19;
-  --focus-ring: var(--moss);
-  --link: var(--moss);
+
+  /* Core */
+  --canvas: #eef0ea;
+  --surface: #ffffff;
+  --ink: #1f2a24;
+  --ink-muted: #4a5750;
+  --caramel-text: #8a5530;
+  --link: var(--caramel-text);
+  --line: var(--ink);
+  --sidebar: var(--canvas);
+
+  /* Tuck's art (fills, never text) */
+  --caramel: #d69a6a;
+  --on-caramel: #1f2a24;
+  --caramel-deep: #bb895f;
+  --caramel-wash: #efd2b8;
+  --moss: #9dbb94;
+  --blush: #e8a9a0;
+  --butter: #e3c46b;
+  --tear: #8fb8d8;
+  --ground-shadow: #e4e5e4;
+  --art-ground: #ffffff;
+
+  /* Mood scale (insights charts) */
+  --mood-good: #e3c46b;
+  --mood-okay: #9dbb94;
+  --mood-tired: #7a9fbf;
+  --mood-low: #56738c;
+  --mood-shell: #d69a6a;
+
+  /* Notices (never red) */
+  --moss-wash: #e8f0e4;
+  --butter-wash: #f8efcf;
+  --tear-wash: #e3eef6;
+
+  /* Terminal (tuckshell) */
+  --term-bar: #2a3830;
+  --term-bg: #1f2a24;
+  --term-edge: #1f2a24;
+  --term-text: #e6eee3;
+  --term-dim: #b9ccb2;
+  --term-tuck: #f0c49e;
+  --term-faint: #8a9b90;
+
+  /* ANSI slots: error red prints as blush */
+  --ansi-black: var(--term-bg);
+  --ansi-red: var(--blush);
+  --ansi-green: var(--moss);
+  --ansi-yellow: var(--butter);
+  --ansi-blue: var(--tear);
+  --ansi-magenta: var(--caramel);
+  --ansi-cyan: #8fc4b8;
+  --ansi-white: var(--term-text);
+  --ansi-bright-black: var(--term-faint);
+  --ansi-bright-red: #f0c4bd;
+  --ansi-bright-green: var(--term-dim);
+  --ansi-bright-yellow: #f0d898;
+  --ansi-bright-blue: #b5d0e6;
+  --ansi-bright-magenta: var(--term-tuck);
+  --ansi-bright-cyan: #b5dcd2;
+  --ansi-bright-white: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
     color-scheme: dark;
-    --paper: #161513;
-    --paper-deep: #22201d;
-    --hairline: #34312c;
-    --ink: #f1ede4;
-    --graphite: #b4ad9f;
-    --rule: #7d776c;
-    --moss: #8cc3b0;
-    --on-moss: #10201b;
-    --moss-soft: #1d2e28;
-    --error: #f59389;
-    --error-soft: #3a1a16;
+    --canvas: #161e1a;
+    --surface: #1f2a24;
+    --ink: #e6eee3;
+    --ink-muted: #9fb39a;
+    --caramel-text: #f0c49e;
+    --caramel-wash: #5a4330;
+    --moss-wash: #2c3a2a;
+    --butter-wash: #3d3720;
+    --tear-wash: #23323d;
+    --ground-shadow: #121915;
+    --art-ground: #d9dfd4;
+    --term-edge: #3a4a41;
   }
 }
 
 :root[data-theme='dark'] {
   color-scheme: dark;
-  --paper: #161513;
-  --paper-deep: #22201d;
-  --hairline: #34312c;
-  --ink: #f1ede4;
-  --graphite: #b4ad9f;
-  --rule: #7d776c;
-  --moss: #8cc3b0;
-  --on-moss: #10201b;
-  --moss-soft: #1d2e28;
-  --error: #f59389;
-  --error-soft: #3a1a16;
+  --canvas: #161e1a;
+  --surface: #1f2a24;
+  --ink: #e6eee3;
+  --ink-muted: #9fb39a;
+  --caramel-text: #f0c49e;
+  --caramel-wash: #5a4330;
+  --moss-wash: #2c3a2a;
+  --butter-wash: #3d3720;
+  --tear-wash: #23323d;
+  --ground-shadow: #121915;
+  --art-ground: #d9dfd4;
+  --term-edge: #3a4a41;
+}
+
+/*
+ * Low stimulation palette (docs/mascot-tuck-snail-palette-variants.md, section 2),
+ * scoped to any element with data-palette="low". Same token names, new values, so
+ * every component switches with no code changes. Tuck's art colors and the mood
+ * scale stay fixed. Variant names map to core ones: selected = caramel-wash,
+ * done-wash = moss-wash, look-wash = butter-wash, info-wash = tear-wash.
+ */
+[data-palette='low'] {
+  --canvas: #e9ebe7;
+  --surface: #f2f3f0;
+  --ink: #343b37;
+  --ink-muted: #59615c;
+  --link: #6b5340;
+  --line: #7a827d;
+  --sidebar: #e2e5e0;
+  --caramel-wash: #e2dbd2;
+  --art-ground: #f2f3f0;
+  --moss-wash: #e3e8e0;
+  --butter-wash: #ece8d8;
+  --tear-wash: #e1e6e8;
+  --term-bg: #2e3431;
+  --term-bar: #3a413d;
+  --term-edge: #7a827d;
+  --term-text: #d9ddd9;
+  --term-dim: #a9b0ab;
+  --term-tuck: #d9b89a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) [data-palette='low'] {
+    --canvas: #1c1f1d;
+    --surface: #232725;
+    --ink: #cdd2ce;
+    --ink-muted: #98a09a;
+    --link: #d2b293;
+    --line: #6f7872;
+    --sidebar: #202321;
+    --caramel-wash: #3a332c;
+    --art-ground: #c9cec8;
+    --moss-wash: #262e28;
+    --butter-wash: #302d22;
+    --tear-wash: #24292c;
+    --term-bg: #181b19;
+    --term-bar: #232725;
+    --term-edge: #6f7872;
+    --term-text: #cdd2ce;
+    --term-dim: #98a09a;
+    --term-tuck: #d2b293;
+  }
+}
+
+:root[data-theme='dark'] [data-palette='low'] {
+  --canvas: #1c1f1d;
+  --surface: #232725;
+  --ink: #cdd2ce;
+  --ink-muted: #98a09a;
+  --link: #d2b293;
+  --line: #6f7872;
+  --sidebar: #202321;
+  --caramel-wash: #3a332c;
+  --art-ground: #c9cec8;
+  --moss-wash: #262e28;
+  --butter-wash: #302d22;
+  --tear-wash: #24292c;
+  --term-bg: #181b19;
+  --term-bar: #232725;
+  --term-edge: #6f7872;
+  --term-text: #cdd2ce;
+  --term-dim: #98a09a;
+  --term-tuck: #d2b293;
 }
 
 @theme inline {
-  /* Colour: bg-*, text-*, border-*, outline-* */
+  /* Color: bg-*, text-*, border-*, outline-*. Tailwind's default palette is off. */
   --color-*: initial;
-  --color-white: #ffffff;
-  --color-black: #000000;
   --color-transparent: transparent;
-  --color-paper: var(--paper);
-  --color-paper-deep: var(--paper-deep);
-  --color-hairline: var(--hairline);
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
   --color-ink: var(--ink);
-  --color-graphite: var(--graphite);
-  --color-rule: var(--rule);
-  --color-moss: var(--moss);
-  --color-on-moss: var(--on-moss);
-  --color-moss-soft: var(--moss-soft);
-  --color-error: var(--error);
-  --color-error-soft: var(--error-soft);
-  --color-highlighter: var(--highlighter);
-  --color-on-highlighter: var(--on-highlighter);
-  --color-focus-ring: var(--focus-ring);
+  --color-ink-muted: var(--ink-muted);
+  --color-caramel-text: var(--caramel-text);
   --color-link: var(--link);
+  --color-line: var(--line);
+  --color-sidebar: var(--sidebar);
+  --color-caramel: var(--caramel);
+  --color-on-caramel: var(--on-caramel);
+  --color-caramel-deep: var(--caramel-deep);
+  --color-caramel-wash: var(--caramel-wash);
+  --color-moss: var(--moss);
+  --color-blush: var(--blush);
+  --color-butter: var(--butter);
+  --color-tear: var(--tear);
+  --color-ground-shadow: var(--ground-shadow);
+  --color-art-ground: var(--art-ground);
+  --color-mood-good: var(--mood-good);
+  --color-mood-okay: var(--mood-okay);
+  --color-mood-tired: var(--mood-tired);
+  --color-mood-low: var(--mood-low);
+  --color-mood-shell: var(--mood-shell);
+  --color-moss-wash: var(--moss-wash);
+  --color-butter-wash: var(--butter-wash);
+  --color-tear-wash: var(--tear-wash);
+  --color-term-bar: var(--term-bar);
+  --color-term-bg: var(--term-bg);
+  --color-term-edge: var(--term-edge);
+  --color-term-text: var(--term-text);
+  --color-term-dim: var(--term-dim);
+  --color-term-tuck: var(--term-tuck);
+  --color-term-faint: var(--term-faint);
 }
 
 @theme {
-  /* Type families: font-serif, font-sans */
-  --font-serif: 'Source Serif 4', 'Source Serif Pro', Georgia, serif;
-  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  /* Type families: font-sans (everything spoken), font-mono (anything Tuck types) */
+  --font-sans: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  /* Type styles: text-heading-xl ... text-caption (size, line height, weight, tracking) */
-  --text-heading-xl: 40px;
-  --text-heading-xl--line-height: 48px;
-  --text-heading-xl--font-weight: 600;
-  --text-heading-xl--letter-spacing: -0.01em;
-  --text-heading-lg: 32px;
-  --text-heading-lg--line-height: 40px;
-  --text-heading-lg--font-weight: 600;
-  --text-heading-lg--letter-spacing: -0.01em;
-  --text-heading-md: 24px;
-  --text-heading-md--line-height: 32px;
-  --text-heading-md--font-weight: 600;
-  --text-heading-sm: 20px;
-  --text-heading-sm--line-height: 28px;
-  --text-heading-sm--font-weight: 600;
-  --text-note: 17px;
-  --text-note--line-height: 28px;
-  --text-note--font-weight: 400;
+  /* Type styles: text-display ... text-mono-sm (size, line height, weight) */
+  --text-display: 56px;
+  --text-display--line-height: 1;
+  --text-display--font-weight: 800;
+  --text-title: 40px;
+  --text-title--line-height: 1.1;
+  --text-title--font-weight: 800;
+  --text-heading: 26px;
+  --text-heading--line-height: 1.15;
+  --text-heading--font-weight: 800;
+  --text-lead: 18px;
+  --text-lead--line-height: 1.4;
+  --text-lead--font-weight: 400;
+  --text-label: 18px;
+  --text-label--line-height: 1.3;
+  --text-label--font-weight: 600;
   --text-body: 16px;
-  --text-body--line-height: 24px;
+  --text-body--line-height: 1.5;
   --text-body--font-weight: 400;
-  --text-label: 16px;
-  --text-label--line-height: 24px;
-  --text-label--font-weight: 500;
-  --text-body-sm: 14px;
-  --text-body-sm--line-height: 20px;
-  --text-body-sm--font-weight: 400;
+  --text-note: 15px;
+  --text-note--line-height: 1.45;
+  --text-note--font-weight: 400;
+  --text-panel-label: 14px;
+  --text-panel-label--line-height: 1.3;
+  --text-panel-label--font-weight: 600;
   --text-caption: 13px;
-  --text-caption--line-height: 18px;
-  --text-caption--font-weight: 500;
-  --text-caption--letter-spacing: 0.01em;
+  --text-caption--line-height: 1.5;
+  --text-caption--font-weight: 400;
+  --text-eyebrow: 14px;
+  --text-eyebrow--line-height: 1.3;
+  --text-eyebrow--font-weight: 400;
+  --text-eyebrow--letter-spacing: 0.12em;
+  --text-mono-lg: 26px;
+  --text-mono-lg--line-height: 1.5;
+  --text-mono-chip: 16px;
+  --text-mono-chip--line-height: 1.4;
+  --text-mono: 15px;
+  --text-mono--line-height: 1.6;
+  --text-mono-sm: 13px;
+  --text-mono-sm--line-height: 1.4;
 
-  /* Spacing: the 4px base means p-2 = space-2 (8px), gap-3 = space-3 (12px), p-8 = space-8 (32px) */
-  --spacing: 4px;
-  --spacing-target: 44px;
-  --spacing-control: 48px;
+  /* Spacing: a 1px base, so utilities read as the design system's tokens:
+     gap-10 = space-10 (10px), p-24 = space-24 (24px), px-64 = space-64. */
+  --spacing: 1px;
 
-  /* Widths: max-w-card */
-  --container-card: 440px;
+  /* Widths: max-w-page for the page column, max-w-phone for check-in cards */
+  --container-page: 1120px;
+  --container-phone: 420px;
 
-  /* Radius: rounded-sm / rounded-md / rounded-lg. No shadows in this system. */
-  --radius-sm: 3px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
+  /* Radius: chips, terminal, cards and tiles, phone frame. No shadows in this system. */
+  --radius-sm: 14px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
 }
 
 @layer base {
   body {
-    @apply bg-paper font-sans text-body text-ink antialiased;
+    @apply bg-canvas font-sans text-body text-ink antialiased;
+  }
+
+  a {
+    color: var(--link);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  a:hover {
+    color: var(--ink);
   }
 
   :focus-visible {
-    outline: 2px solid var(--focus-ring);
+    outline: 2px solid var(--ink);
     outline-offset: 2px;
   }
 
+  @media (forced-colors: active) {
+    [aria-pressed='true'] {
+      border-color: Highlight;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .animate-spin {
-      animation-duration: 3s;
+    *,
+    *::before,
+    *::after {
+      animation: none !important;
+      transition: none !important;
     }
   }
 }

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 130" width="160" height="130" role="img" aria-label="Tuck tucked into its shell">
+<ellipse cx="80" cy="120" rx="56" ry="6" fill="#1F2A24" opacity="0.15"></ellipse>
+<circle cx="80" cy="66" r="50" fill="#FFFFFF" stroke="#1F2A24" stroke-width="3"></circle>
+<path d="M80 66 a6 6 0 1 0 6 6 a13 13 0 1 0 -13 -13 a22 22 0 1 0 22 22 a33 33 0 1 0 -33 -33" fill="none" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"></path>
+</svg>

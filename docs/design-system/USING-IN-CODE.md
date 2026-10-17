@@ -1,45 +1,59 @@
-# Using the Fieldnote design system in code
+# Using the Tuck design system in code
 
-The other files in this folder are copied unchanged from the Fieldnote design system
-(`README.md` is its brand book, `tokens.json` its values, `components/` and `assets/`
-its guidelines). This file maps them to the project's code. Read the brand book first.
+The brand book, every token value and the component rules are in [`docs/tuck-design-system.md`](../tuck-design-system.md). Read it before building UI. This page maps those tokens to the Tailwind classes this app uses.
 
-## Where things live
+Tokens live in `src/index.css` as CSS variables, with light values on `:root` and dark values under `prefers-color-scheme: dark` and `[data-theme="dark"]`. Tailwind's default palette is off, so only token classes exist. Never type a hex value in a component.
 
-| Design system | In the project |
-|---|---|
-| `tokens.json` colours (light + dark) | CSS variables in `src/index.css` (`:root`, dark under `prefers-color-scheme` and `[data-theme="dark"]`) |
-| Colours, type, spacing, radius, sizes | Tailwind theme in `src/index.css` (`@theme`) |
-| Fonts (Source Serif 4, Inter) | Google Fonts `<link>` in `index.html` |
-| Components | `src/components/<Name>.jsx`, one per guideline in `components/` |
-| Icons | `src/components/Icon.jsx` (Lucide v1.48.0 paths) |
-| Provider logos | `public/logos/` (add the official files; see the README there) |
+## Color
 
-## Token → Tailwind class
+| Token                                   | Classes                                                                                                                 |
+| --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `canvas`, `surface`                     | `bg-canvas`, `bg-surface`                                                                                               |
+| `ink`, `ink-muted`                      | `text-ink`, `text-ink-muted`, `border-ink`                                                                              |
+| `caramel-text`, `link`                  | `text-caramel-text`, `text-link` (plain `<a>` is already styled)                                                        |
+| `caramel`, `on-caramel`                 | `bg-caramel` with `text-on-caramel` and `border-on-caramel`                                                             |
+| `caramel-wash`                          | `bg-caramel-wash`, selected chip only (with `border-4` and `font-semibold`)                                             |
+| `moss`, `blush`, `butter`, `tear`       | `bg-moss` and so on: fills only, never text                                                                             |
+| `art-ground`                            | `bg-art-ground`, the plate behind every mascot SVG                                                                      |
+| `moss-wash`, `butter-wash`, `tear-wash` | `bg-moss-wash` (done), `bg-butter-wash` (needs a look), `bg-tear-wash` (info)                                           |
+| `mood-good` … `mood-shell`              | `bg-mood-good` and so on, in charts only: outline in `ink`, label with the face                                         |
+| `term-*`                                | `bg-term-bg`, `bg-term-bar`, `border-term-edge`, `text-term-text`, `text-term-dim`, `text-term-tuck`, `text-term-faint` |
 
-| Token | Class examples |
-|---|---|
-| `paper`, `paper-deep` | `bg-paper`, `bg-paper-deep` |
-| `ink`, `graphite` | `text-ink`, `text-graphite` |
-| `rule`, `hairline` | `border-rule` (controls), `border-hairline` / `divide-hairline` (decoration only) |
-| `moss`, `on-moss`, `moss-soft` | `bg-moss text-on-moss`, `bg-moss-soft` |
-| `error`, `error-soft` | `text-error`, `bg-error-soft` |
-| `highlighter`, `on-highlighter` | Only through `<Highlight>` |
-| `link`, `focus-ring` | `text-link underline`; focus ring is global in `index.css` |
-| `heading-xl` … `heading-sm` | `font-serif text-heading-xl` … `text-heading-sm` |
-| `note-body`, `note-quote` | `font-serif text-note`, add `italic` for quotes |
-| `body`, `label`, `body-sm`, `caption` | `text-body`, `text-label`, `text-body-sm`, `text-caption` |
-| `space-1` … `space-12` | the number is the step: `p-4` = `space-4` (16px), `gap-3` = `space-3` (12px) |
-| `radius-sm` / `md` / `lg` | `rounded-sm` / `rounded-md` / `rounded-lg` |
-| `control-height`, `target-min` | `min-h-control` (48px), `min-h-target` / `min-w-target` (44px) |
-| `card-width` | `max-w-card` (440px) |
+## Type
 
-Tailwind's default colour palette is switched off (`--color-*: initial`), so `bg-blue-500`
-and friends don't exist. Use the tokens.
+| Style     | Class                     | Style                                     | Class                                |
+| --------- | ------------------------- | ----------------------------------------- | ------------------------------------ |
+| `display` | `text-display`            | `note`                                    | `text-note`                          |
+| `title`   | `text-title`              | `panel-label`                             | `text-panel-label`                   |
+| `heading` | `text-heading`            | `caption`                                 | `text-caption`                       |
+| `lead`    | `text-lead`               | `eyebrow`                                 | `text-eyebrow uppercase`             |
+| `label`   | `text-label`              | `mono-lg`, `mono-chip`, `mono`, `mono-sm` | `font-mono text-mono-chip` and so on |
+| `body`    | `text-body` (the default) |                                           |                                      |
 
-## Theme
+Each class sets size, line height and weight together. `font-sans` (Bricolage Grotesque) is the default; use `font-mono` (JetBrains Mono) for anything Tuck types.
 
-Light and dark follow the OS. To force one, set `data-theme="light"` or `data-theme="dark"`
-on `<html>`. Tailwind's `dark:` variant follows the same switch. Never hard-code a colour
-that should change with the theme; the only literal colours are the Google/Apple button
-styles, which follow the providers' rules.
+## Space, radius and stroke
+
+- The spacing base is 1px, so utilities read as the tokens: `gap-10` is `space-10`, `p-24` is `space-24`, `px-64` is `space-64`. Stay on the scale: 6, 8, 10, 12, 16, 20, 24, 32, 48, 64.
+- Radius: `rounded-sm` (14, chips), `rounded-md` (16, terminal), `rounded-lg` (20, cards and tiles), `rounded-xl` (28, phone frame), `rounded-full`.
+- Outlines: `border-2 border-ink` (`stroke-ui`). No shadows.
+- Widths: `max-w-page` (1120px page column), `max-w-phone` (420px check-in card).
+
+## Components
+
+All six are in `src/components/`, each with a test:
+
+| Component        | Use                                                                     |
+| ---------------- | ----------------------------------------------------------------------- |
+| `TuckFace`       | Tuck's ASCII face, read aloud as words                                  |
+| `MoodChip`       | A check-in answer; wrap the set in `role="group"` named by the question |
+| `ExpressionCard` | An expression's art on the `art-ground` plate, with its name and code   |
+| `Terminal`       | The tuckshell window; long lines scroll inside it                       |
+| `SocialTile`     | A caramel post tile; art is `tuck-tucked-white.svg` only                |
+| `TrustNote`      | "Stored on this device only… 988", on every check-in surface            |
+
+The face map (`FACES`) and screen-reader words are in `src/lib/faces.js`.
+
+## Mascot art
+
+The ten SVGs are in `public/mascot/`, copied byte for byte from the design system. Use them as `<img src="/mascot/tuck-happy.svg" alt="Tuck happy, stalks up, smiling" />`. Never redraw, recolor or tint them, and always set them on `art-ground` (or on `caramel`, for the white-shell file only). There is no icon set: use words and Tuck's faces.

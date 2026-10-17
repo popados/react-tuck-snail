@@ -1,0 +1,95 @@
+# Tuck the Snail
+
+Slow progress is still progress.
+
+Tuck is a calm snail mascot from Shellday Studio. He lives in gentle habit and mood apps, web games and the terminal. His shell is a spiral `@`, so he works as art, as a 32px avatar and as one character on a roguelike map.
+
+This repo holds the web app that will become **Tuck Check-in**, a habit and mood tracker with no streaks, no account, and everything stored on your device. It also holds the character, design system and launch docs behind it.
+
+![Tuck the Snail model sheet: hero pose, tucked in to rest, the round avatar, and the ASCII text forms](images/designs/Model%20sheet.png)
+
+## Meet Tuck
+
+The shell never changes. Emotion lives in the eye stalks and the mouth, so Tuck reads the same everywhere.
+
+![Six expressions of Tuck: happy, sleepy, sad, surprised, stressed and shy, each labelled with its ASCII face](images/designs/Expressions.png)
+
+Each expression has a text form, used exactly as written:
+
+| Face   | Mood   | Face   | Mood      |
+| ------ | ------ | ------ | --------- |
+| `@_oo` | awake  | `@_OO` | surprised |
+| `@_^^` | happy  | `@_><` | stressed  |
+| `@_--` | sleepy | `@_`   | shy       |
+| `@_;;` | sad    | `(@)`  | resting   |
+
+On a map, Tuck is a plain `@`. `...@_^^` means progress.
+
+## One snail, three places
+
+The same Tuck shows up in the terminal (tuckshell), the check-in app, and on social tiles.
+
+![Tuck in context: a tuckshell terminal session, the check-in screen asking how are you today, and a caramel social tile reading some days are shell days](images/designs/Tuck%20in%20context.png)
+
+```text
+$ tuckshell checkin tired
+@_--  noted. rest counts too.
+$ tuckshell checkin shell
+(@)   shell day. see you when you're back.
+```
+
+The landing page design is in [images/mockups/LandingPage](images/mockups/LandingPage/Landing%20page%20%C2%B7%20desktop.png). Five home page layouts, in the dark palette, are in [images/mockups/HomePages_Dark_Palette](images/mockups/HomePages_Dark_Palette).
+
+## What Tuck believes
+
+- **Rest counts.** Shell days are logged on purpose and count like any other day.
+- **Your data stays home.** No account, no analytics on mood entries. Check-ins live in your browser.
+- **No streaks.** Tuck counts the days you showed up. Blank days stay blank. Nothing resets to zero.
+- **Never red.** Notices are moss, butter or tear. Nothing in the app shames you.
+
+Tuck is a check-in buddy, not a therapist, and gives no medical advice. Need to talk to someone? Call or text 988.
+
+## Run it locally
+
+You need Node.js 20.19 or later.
+
+```bash
+npm install
+npm run dev
+```
+
+| Command                | What it does                     |
+| ---------------------- | -------------------------------- |
+| `npm run dev`          | Start the dev server             |
+| `npm run build`        | Build for production into `dist` |
+| `npm run preview`      | Serve the production build       |
+| `npm test`             | Run the tests once (Vitest)      |
+| `npm run lint`         | Lint with ESLint                 |
+| `npm run format:check` | Check formatting with Prettier   |
+
+The stack is React with Vite, React Router, TanStack Query, Zustand, React Hook Form with Zod, and Tailwind CSS, all in JavaScript.
+
+The app is built on the Tuck the Snail design system: its colors (light and dark), type, spacing, six components (`src/components/`) and the ten mascot SVGs (`public/mascot/`). The home page has a working check-in that saves today's answer in your browser. The rest of Tuck Check-in (insights, habits, the shelf) isn't built yet. For which Tailwind class matches which token, see [docs/design-system/USING-IN-CODE.md](docs/design-system/USING-IN-CODE.md).
+
+## Docs
+
+| Doc                                                                             | What's in it                                                            |
+| ------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| [Character build](docs/mascot-tuck-snail.md)                                    | Personality, voice, names, design notes, rounds 1 to 5, and next steps  |
+| [Design system](docs/tuck-design-system.md)                                     | Brand book, 47 color tokens in two themes, type, spacing and components |
+| [Palette variants](docs/mascot-tuck-snail-palette-variants.md)                  | Bedtime, low stimulation, paper, light terminal and seasonal            |
+| [Mood palettes](docs/mascot-tuck-snail-mood-palettes.md)                        | The mood scale and how charts and notices use it                        |
+| [Product strategy](docs/markdown/mascot-tuck-snail-product-strategy.md)         | Vision, pillars, risks, roadmap and metrics                             |
+| [Launch campaign plan](docs/markdown/mascot-tuck-snail-campaign-plan-launch.md) | The 8-week Shell Days launch                                            |
+| [Topic cluster](docs/markdown/mascot-tuck-snail-topic-cluster.md)               | Nine articles around "habit tracker without streaks"                    |
+
+## Voice, if you write for Tuck
+
+- Lowercase in the app and the terminal. Sentence case for headings.
+- Short sentences. Questions instead of commands ("water break?").
+- Never "missed", "failed" or a streak count.
+- No emoji. Tuck's ASCII faces do that job.
+
+`@_^^` thanks for reading. no rush.
+
+Made by Sam and Tuck · Shellday Studio

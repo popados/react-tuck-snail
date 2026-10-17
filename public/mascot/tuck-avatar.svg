@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Round profile avatar of Tuck">
+<circle cx="60" cy="60" r="56" fill="#9DBB94" stroke="#1F2A24" stroke-width="3"></circle>
+<circle cx="50" cy="70" r="28" fill="#D69A6A" stroke="#1F2A24" stroke-width="3"></circle>
+<path d="M50 70 a4 4 0 1 0 4 4 a9 9 0 1 0 -9 -9 a15 15 0 1 0 15 15" fill="none" stroke="#1F2A24" stroke-width="2.5" stroke-linecap="round"></path>
+<line x1="80" y1="58" x2="76" y2="32" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"></line>
+<line x1="88" y1="58" x2="94" y2="33" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"></line>
+<circle cx="76" cy="29" r="6" fill="#FFFFFF" stroke="#1F2A24" stroke-width="2.5"></circle>
+<circle cx="94" cy="30" r="6" fill="#FFFFFF" stroke="#1F2A24" stroke-width="2.5"></circle>
+<circle cx="77" cy="30" r="2.5" fill="#1F2A24"></circle>
+<circle cx="95" cy="31" r="2.5" fill="#1F2A24"></circle>
+</svg>

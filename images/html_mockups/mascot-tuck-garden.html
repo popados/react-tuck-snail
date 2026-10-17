@@ -1,0 +1,102 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Tuck in the Garden</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one framed illustration on the Tuck canvas, notes in a wrapping row beneath */
+:root{
+  --canvas:#eef0ea; --surface:#ffffff; --ink:#1f2a24; --ink-muted:#4a5750; --caramel-text:#8a5530; --art-ground:#ffffff;
+  --font-sans:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--canvas:#161e1a;--surface:#1f2a24;--ink:#e6eee3;--ink-muted:#9fb39a;--caramel-text:#f0c49e;--art-ground:#d9dfd4;color-scheme:dark}}
+:root[data-theme="dark"]{--canvas:#161e1a;--surface:#1f2a24;--ink:#e6eee3;--ink-muted:#9fb39a;--caramel-text:#f0c49e;--art-ground:#d9dfd4;color-scheme:dark}
+body{background:var(--canvas);color:var(--ink);font:400 16px/1.5 var(--font-sans)}
+main{max-width:960px;margin:0 auto;padding-block:40px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:28px}
+header{display:flex;flex-direction:column;gap:8px}
+.eyebrow{font:600 12px/1 var(--font-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-muted)}
+h1{font:800 clamp(34px,6vw,56px)/1.02 var(--font-sans);letter-spacing:-.02em;margin:0;text-wrap:balance}
+.lede{margin:0;color:var(--ink-muted);max-width:60ch}
+figure{margin:0;border:3px solid var(--ink);border-radius:24px;overflow:hidden;background:var(--art-ground)}
+.art{display:block;width:100%;height:auto}
+figcaption{font:400 15px/1.4 var(--font-mono);padding:14px 20px;border-top:3px solid var(--ink);background:var(--surface);color:var(--ink);white-space:pre-wrap}
+figcaption b{color:var(--caramel-text);font-weight:600}
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.notes section{display:flex;flex-direction:column;gap:6px;min-width:0}
+.notes h2{font:600 15px/1.3 var(--font-sans);margin:0}
+.notes p{margin:0;color:var(--ink-muted);font-size:15px}
+.swatches{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.sw{width:28px;height:28px;border-radius:50%;border:2px solid var(--ink)}
+code{font:400 .92em var(--font-mono)}
+</style>
+<main>
+  <header>
+    <span class="eyebrow">Character illustration · hero, garden scene</span>
+    <h1>Tuck in the Garden</h1>
+    <p class="lede">Tuck in his hero pose, sliding toward a leaf on a slow sunny afternoon. Built on the model sheet geometry, so the shell, body and stalks match every other Tuck asset.</p>
+  </header>
+  <figure>
+<svg class="art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 540" role="img" aria-label="Tuck the snail in a quiet garden, smiling with eye stalks up, sliding toward a leaf">
+  <rect width="800" height="540" fill="#EEF0EA"/>
+  <circle cx="648" cy="128" r="54" fill="#F3DFA0"/>
+  <circle cx="648" cy="128" r="76" fill="none" stroke="#F3DFA0" stroke-width="4" stroke-dasharray="2 14" stroke-linecap="round"/>
+  <g fill="#FFFFFF" opacity="0.85"><path d="M96 150 a26 26 0 0 1 46 -16 a22 22 0 0 1 38 10 a18 18 0 0 1 2 36 H100 a16 16 0 0 1 -4 -30Z"/><path d="M300 92 a18 18 0 0 1 32 -10 a15 15 0 0 1 26 8 a12 12 0 0 1 0 24 H302 a11 11 0 0 1 -2 -22Z"/></g>
+  <path d="M0 420 C120 360 230 372 330 404 C430 436 520 352 640 360 C710 365 760 388 800 400 L800 540 L0 540Z" fill="#D7E2D0"/>
+  <path d="M0 456 C150 418 290 440 420 452 C560 464 680 426 800 440 L800 540 L0 540Z" fill="#C6D6BE"/>
+  <rect x="0" y="474" width="800" height="66" fill="#DDE5D5"/>
+  <line x1="0" y1="474" x2="800" y2="474" stroke="#1F2A24" stroke-width="3" stroke-linecap="round" opacity="0.18"/>
+  <!-- trail: ...@ -->
+  <g fill="#B9CCB2"><circle cx="62" cy="488" r="5"/><circle cx="96" cy="488" r="5"/><circle cx="130" cy="488" r="5"/></g>
+  <!-- flower -->
+  <g stroke="#1F2A24" stroke-width="3">
+    <path d="M86 474 C86 452 90 438 96 424" fill="none" stroke-linecap="round"/>
+    <path d="M90 450 C76 444 70 434 72 426 C82 428 90 438 90 450Z" fill="#9DBB94" stroke-linejoin="round"/>
+    <g fill="#E8A9A0"><circle cx="96" cy="406" r="9"/><circle cx="112" cy="416" r="9"/><circle cx="106" cy="434" r="9"/><circle cx="86" cy="434" r="9"/><circle cx="80" cy="416" r="9"/></g>
+    <circle cx="96" cy="421" r="7" fill="#E3C46B"/>
+  </g>
+  <!-- leaf ahead -->
+  <g stroke="#1F2A24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M650 474 C650 420 690 388 742 384 C748 432 712 470 650 474Z" fill="#9DBB94"/>
+    <path d="M650 474 C680 446 704 422 728 400" fill="none"/>
+    <path d="M684 440 L676 418 M704 420 L700 402" fill="none" opacity="0.6"/>
+  </g>
+  <g fill="none" stroke="#1F2A24" stroke-width="3" stroke-linecap="round" opacity="0.5">
+    <path d="M610 474 L604 456 M620 474 L622 452 M760 474 L756 458 M770 474 L774 460"/>
+  </g>
+  <!-- ground shadow -->
+  <ellipse cx="380" cy="480" rx="230" ry="10" fill="#1F2A24" opacity="0.08"/>
+  <!-- Tuck, hero pose geometry from tuck-hero.svg at 2x -->
+  <g transform="translate(150 150) scale(2)">
+    <rect x="28" y="128" width="190" height="34" rx="17" fill="#9DBB94" stroke="#1F2A24" stroke-width="3"/>
+    <circle cx="196" cy="118" r="26" fill="#9DBB94" stroke="#1F2A24" stroke-width="3"/>
+    <rect x="150" y="128" width="40" height="31" fill="#9DBB94"/>
+    <path d="M46 152 L200 152" stroke="#B9CCB2" stroke-width="3" stroke-linecap="round"/>
+    <line x1="188" y1="96" x2="178" y2="52" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"/>
+    <line x1="204" y1="96" x2="216" y2="54" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="178" cy="48" r="9" fill="#FFFFFF" stroke="#1F2A24" stroke-width="3"/>
+    <circle cx="216" cy="50" r="9" fill="#FFFFFF" stroke="#1F2A24" stroke-width="3"/>
+    <circle cx="180" cy="49" r="3.5" fill="#1F2A24"/>
+    <circle cx="218" cy="51" r="3.5" fill="#1F2A24"/>
+    <circle cx="181.5" cy="47.5" r="1.1" fill="#FFFFFF"/>
+    <circle cx="219.5" cy="49.5" r="1.1" fill="#FFFFFF"/>
+    <path d="M188 124 Q197 132 206 124" fill="none" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="212" cy="118" r="5" fill="#E8A9A0"/>
+    <circle cx="102" cy="92" r="56" fill="#D69A6A" stroke="#1F2A24" stroke-width="3"/>
+    <path d="M62 66 A48 48 0 0 1 96 44" fill="none" stroke="#EFD2B8" stroke-width="5" stroke-linecap="round"/>
+    <path d="M140 124 A50 50 0 0 1 116 141" fill="none" stroke="#BB895F" stroke-width="5" stroke-linecap="round"/>
+    <path d="M102 92 a7 7 0 1 0 7 7 a15 15 0 1 0 -15 -15 a25 25 0 1 0 25 25 a37 37 0 1 0 -37 -37" fill="none" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"/>
+    <path d="M14 150 L4 150 M14 158 L0 158" stroke="#9DBB94" stroke-width="3" stroke-linecap="round"/>
+  </g>
+</svg>
+
+    <figcaption><b>...@_^^</b>  i got here eventually.</figcaption>
+  </figure>
+  <div class="notes">
+    <section><h2>Same Tuck, bigger stage</h2><p>The character is the hero SVG at 2x, unchanged. Added only a shell highlight and shadow, a belly line and eye shine.</p></section>
+    <section><h2>Palette</h2><p>Caramel shell, moss body, blush cheek, ink outlines. The garden uses quiet tints so Tuck stays the focus.</p>
+      <div class="swatches" aria-hidden="true"><span class="sw" style="background:#d69a6a"></span><span class="sw" style="background:#9dbb94"></span><span class="sw" style="background:#e8a9a0"></span><span class="sw" style="background:#e3c46b"></span><span class="sw" style="background:#1f2a24"></span></div></section>
+    <section><h2>Where it goes</h2><p>Landing page hero, launch posts and the web game title screen. The three trail dots echo the <code>...@</code> progress form.</p></section>
+  </div>
+</main>
+
+</body></html>

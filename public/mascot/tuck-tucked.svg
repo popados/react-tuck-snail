@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 130" width="160" height="130" role="img" aria-label="Tuck fully retracted into its shell, resting">
+<ellipse cx="80" cy="118" rx="58" ry="6" fill="#1F2A24" opacity="0.12"></ellipse>
+<circle cx="80" cy="66" r="50" fill="#D69A6A" stroke="#1F2A24" stroke-width="3"></circle>
+<path d="M80 66 a6 6 0 1 0 6 6 a13 13 0 1 0 -13 -13 a22 22 0 1 0 22 22 a33 33 0 1 0 -33 -33" fill="none" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"></path>
+<text x="128" y="26" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="16" font-weight="600" fill="#1F2A24">zZ</text>
+</svg>

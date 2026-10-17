@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140" width="200" height="140" role="img" aria-label="Tuck happy, stalks up, smiling">
+<rect x="20" y="98" width="150" height="28" rx="14" fill="#9DBB94" stroke="#1F2A24" stroke-width="3"></rect>
+<circle cx="152" cy="90" r="20" fill="#9DBB94" stroke="#1F2A24" stroke-width="3"></circle>
+<rect x="118" y="99" width="32" height="25" fill="#9DBB94"></rect>
+<line x1="146" y1="72" x2="140" y2="40" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"></line>
+<line x1="158" y1="72" x2="166" y2="42" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"></line>
+<circle cx="140" cy="36" r="8" fill="#FFFFFF" stroke="#1F2A24" stroke-width="3"></circle>
+<circle cx="166" cy="38" r="8" fill="#FFFFFF" stroke="#1F2A24" stroke-width="3"></circle>
+<path d="M135 38 Q140 32 145 38 M161 40 Q166 34 171 40" fill="none" stroke="#1F2A24" stroke-width="2.5" stroke-linecap="round"></path>
+<path d="M144 95 Q152 103 160 95" fill="none" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"></path>
+<circle cx="164" cy="90" r="4" fill="#E8A9A0"></circle>
+<circle cx="78" cy="70" r="42" fill="#D69A6A" stroke="#1F2A24" stroke-width="3"></circle>
+<path d="M78 70 a5 5 0 1 0 5 5 a11 11 0 1 0 -11 -11 a19 19 0 1 0 19 19 a28 28 0 1 0 -28 -28" fill="none" stroke="#1F2A24" stroke-width="2.5" stroke-linecap="round"></path>
+</svg>

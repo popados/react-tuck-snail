@@ -10,6 +10,8 @@ Exported from the Tuck the Snail design system artifact (https://claude.ai/artif
 - Spacing, radius and stroke
 - Components
 - Mascot assets
+- Appendix A: Mascot SVG source
+- Appendix B: Component code
 
 ## Brand book
 
@@ -367,4 +369,350 @@ Tuck's artwork as SVG, drawn in `ink` outlines (`#1f2a24`, 3px; 2.5px on spirals
 
 The sketches also explored three alternate shell colors (lilac `#c7a3d9`, sky `#8fb8d8`, butter `#e3c46b`). Caramel is the chosen shell; the alternates are not part of the system.
 
-The SVG files themselves live in the design system artifact's asset store.
+The SVG source for each file is in the appendix, and the files are saved alongside this doc in `mascot/`.
+
+## Appendix A: Mascot SVG source
+
+Copied byte for byte from the design system's asset store. Save any block as its file name to use it.
+
+### tuck-hero.svg
+
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 190" width="260" height="190" role="img" aria-label="Tuck the snail, side view, smiling with eye stalks up">
+<rect x="28" y="128" width="190" height="34" rx="17" fill="#9DBB94" stroke="#1F2A24" stroke-width="3"></rect>
+<circle cx="196" cy="118" r="26" fill="#9DBB94" stroke="#1F2A24" stroke-width="3"></circle>
+<rect x="150" y="128" width="40" height="31" fill="#9DBB94"></rect>
+<line x1="188" y1="96" x2="178" y2="52" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"></line>
+<line x1="204" y1="96" x2="216" y2="54" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"></line>
+<circle cx="178" cy="48" r="9" fill="#FFFFFF" stroke="#1F2A24" stroke-width="3"></circle>
+<circle cx="216" cy="50" r="9" fill="#FFFFFF" stroke="#1F2A24" stroke-width="3"></circle>
+<circle cx="180" cy="49" r="3.5" fill="#1F2A24"></circle>
+<circle cx="218" cy="51" r="3.5" fill="#1F2A24"></circle>
+<path d="M188 124 Q197 132 206 124" fill="none" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"></path>
+<circle cx="212" cy="118" r="5" fill="#E8A9A0"></circle>
+<circle cx="102" cy="92" r="56" fill="#D69A6A" stroke="#1F2A24" stroke-width="3"></circle>
+<path d="M102 92 a7 7 0 1 0 7 7 a15 15 0 1 0 -15 -15 a25 25 0 1 0 25 25 a37 37 0 1 0 -37 -37" fill="none" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"></path>
+<path d="M14 150 L4 150 M14 158 L0 158" stroke="#9DBB94" stroke-width="3" stroke-linecap="round"></path>
+</svg>
+```
+
+### tuck-happy.svg
+
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140" width="200" height="140" role="img" aria-label="Tuck happy, stalks up, smiling">
+<rect x="20" y="98" width="150" height="28" rx="14" fill="#9DBB94" stroke="#1F2A24" stroke-width="3"></rect>
+<circle cx="152" cy="90" r="20" fill="#9DBB94" stroke="#1F2A24" stroke-width="3"></circle>
+<rect x="118" y="99" width="32" height="25" fill="#9DBB94"></rect>
+<line x1="146" y1="72" x2="140" y2="40" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"></line>
+<line x1="158" y1="72" x2="166" y2="42" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"></line>
+<circle cx="140" cy="36" r="8" fill="#FFFFFF" stroke="#1F2A24" stroke-width="3"></circle>
+<circle cx="166" cy="38" r="8" fill="#FFFFFF" stroke="#1F2A24" stroke-width="3"></circle>
+<path d="M135 38 Q140 32 145 38 M161 40 Q166 34 171 40" fill="none" stroke="#1F2A24" stroke-width="2.5" stroke-linecap="round"></path>
+<path d="M144 95 Q152 103 160 95" fill="none" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"></path>
+<circle cx="164" cy="90" r="4" fill="#E8A9A0"></circle>
+<circle cx="78" cy="70" r="42" fill="#D69A6A" stroke="#1F2A24" stroke-width="3"></circle>
+<path d="M78 70 a5 5 0 1 0 5 5 a11 11 0 1 0 -11 -11 a19 19 0 1 0 19 19 a28 28 0 1 0 -28 -28" fill="none" stroke="#1F2A24" stroke-width="2.5" stroke-linecap="round"></path>
+</svg>
+```
+
+### tuck-sleepy.svg
+
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140" width="200" height="140" role="img" aria-label="Tuck sleepy, stalks loose, eyes closed">
+<rect x="20" y="98" width="150" height="28" rx="14" fill="#9DBB94" stroke="#1F2A24" stroke-width="3"></rect>
+<circle cx="152" cy="90" r="20" fill="#9DBB94" stroke="#1F2A24" stroke-width="3"></circle>
+<rect x="118" y="99" width="32" height="25" fill="#9DBB94"></rect>
+<path d="M146 72 Q140 58 136 48" fill="none" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"></path>
+<path d="M158 72 Q164 60 170 50" fill="none" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"></path>
+<circle cx="135" cy="44" r="8" fill="#FFFFFF" stroke="#1F2A24" stroke-width="3"></circle>
+<circle cx="171" cy="46" r="8" fill="#FFFFFF" stroke="#1F2A24" stroke-width="3"></circle>
+<path d="M130 45 L140 45 M166 47 L176 47" stroke="#1F2A24" stroke-width="2.5" stroke-linecap="round"></path>
+<path d="M147 97 L157 97" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"></path>
+<text x="178" y="26" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="14" font-weight="600" fill="#1F2A24">z</text>
+<text x="186" y="14" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="11" font-weight="600" fill="#1F2A24">z</text>
+<circle cx="78" cy="70" r="42" fill="#D69A6A" stroke="#1F2A24" stroke-width="3"></circle>
+<path d="M78 70 a5 5 0 1 0 5 5 a11 11 0 1 0 -11 -11 a19 19 0 1 0 19 19 a28 28 0 1 0 -28 -28" fill="none" stroke="#1F2A24" stroke-width="2.5" stroke-linecap="round"></path>
+</svg>
+```
+
+### tuck-sad.svg
+
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140" width="200" height="140" role="img" aria-label="Tuck sad, stalks drooping, one tear">
+<rect x="20" y="98" width="150" height="28" rx="14" fill="#9DBB94" stroke="#1F2A24" stroke-width="3"></rect>
+<circle cx="152" cy="90" r="20" fill="#9DBB94" stroke="#1F2A24" stroke-width="3"></circle>
+<rect x="118" y="99" width="32" height="25" fill="#9DBB94"></rect>
+<path d="M146 74 Q136 62 128 64" fill="none" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"></path>
+<path d="M158 74 Q168 62 178 66" fill="none" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"></path>
+<circle cx="124" cy="66" r="8" fill="#FFFFFF" stroke="#1F2A24" stroke-width="3"></circle>
+<circle cx="182" cy="68" r="8" fill="#FFFFFF" stroke="#1F2A24" stroke-width="3"></circle>
+<circle cx="124" cy="69" r="3" fill="#1F2A24"></circle>
+<circle cx="182" cy="71" r="3" fill="#1F2A24"></circle>
+<path d="M186 78 Q182 86 186 88 Q190 86 186 78" fill="#8FB8D8" stroke="#1F2A24" stroke-width="1.5"></path>
+<path d="M145 100 Q152 93 159 100" fill="none" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"></path>
+<circle cx="78" cy="70" r="42" fill="#D69A6A" stroke="#1F2A24" stroke-width="3"></circle>
+<path d="M78 70 a5 5 0 1 0 5 5 a11 11 0 1 0 -11 -11 a19 19 0 1 0 19 19 a28 28 0 1 0 -28 -28" fill="none" stroke="#1F2A24" stroke-width="2.5" stroke-linecap="round"></path>
+</svg>
+```
+
+### tuck-surprised.svg
+
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140" width="200" height="140" role="img" aria-label="Tuck surprised, stalks tall, eyes wide">
+<rect x="20" y="98" width="150" height="28" rx="14" fill="#9DBB94" stroke="#1F2A24" stroke-width="3"></rect>
+<circle cx="152" cy="90" r="20" fill="#9DBB94" stroke="#1F2A24" stroke-width="3"></circle>
+<rect x="118" y="99" width="32" height="25" fill="#9DBB94"></rect>
+<line x1="146" y1="72" x2="142" y2="30" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"></line>
+<line x1="158" y1="72" x2="164" y2="32" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"></line>
+<circle cx="142" cy="24" r="10" fill="#FFFFFF" stroke="#1F2A24" stroke-width="3"></circle>
+<circle cx="164" cy="26" r="10" fill="#FFFFFF" stroke="#1F2A24" stroke-width="3"></circle>
+<circle cx="142" cy="24" r="2.5" fill="#1F2A24"></circle>
+<circle cx="164" cy="26" r="2.5" fill="#1F2A24"></circle>
+<circle cx="152" cy="98" r="4.5" fill="none" stroke="#1F2A24" stroke-width="3"></circle>
+<circle cx="78" cy="70" r="42" fill="#D69A6A" stroke="#1F2A24" stroke-width="3"></circle>
+<path d="M78 70 a5 5 0 1 0 5 5 a11 11 0 1 0 -11 -11 a19 19 0 1 0 19 19 a28 28 0 1 0 -28 -28" fill="none" stroke="#1F2A24" stroke-width="2.5" stroke-linecap="round"></path>
+</svg>
+```
+
+### tuck-stressed.svg
+
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140" width="200" height="140" role="img" aria-label="Tuck stressed, wobbly stalks, squeezed eyes">
+<rect x="20" y="98" width="150" height="28" rx="14" fill="#9DBB94" stroke="#1F2A24" stroke-width="3"></rect>
+<circle cx="152" cy="90" r="20" fill="#9DBB94" stroke="#1F2A24" stroke-width="3"></circle>
+<rect x="118" y="99" width="32" height="25" fill="#9DBB94"></rect>
+<path d="M146 72 Q136 62 144 54 Q150 46 140 40" fill="none" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"></path>
+<path d="M158 72 Q168 62 160 54 Q154 46 166 42" fill="none" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"></path>
+<circle cx="139" cy="36" r="8" fill="#FFFFFF" stroke="#1F2A24" stroke-width="3"></circle>
+<circle cx="167" cy="38" r="8" fill="#FFFFFF" stroke="#1F2A24" stroke-width="3"></circle>
+<path d="M135 33 L141 36 L135 39 M171 35 L165 38 L171 41" fill="none" stroke="#1F2A24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M144 98 L148 95 L152 98 L156 95 L160 98" fill="none" stroke="#1F2A24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M178 30 L184 24 M182 36 L190 34" stroke="#1F2A24" stroke-width="2.5" stroke-linecap="round"></path>
+<circle cx="78" cy="70" r="42" fill="#D69A6A" stroke="#1F2A24" stroke-width="3"></circle>
+<path d="M78 70 a5 5 0 1 0 5 5 a11 11 0 1 0 -11 -11 a19 19 0 1 0 19 19 a28 28 0 1 0 -28 -28" fill="none" stroke="#1F2A24" stroke-width="2.5" stroke-linecap="round"></path>
+</svg>
+```
+
+### tuck-shy.svg
+
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140" width="200" height="140" role="img" aria-label="Tuck shy, stalks pulled in, blushing">
+<rect x="20" y="98" width="150" height="28" rx="14" fill="#9DBB94" stroke="#1F2A24" stroke-width="3"></rect>
+<circle cx="152" cy="90" r="20" fill="#9DBB94" stroke="#1F2A24" stroke-width="3"></circle>
+<rect x="118" y="99" width="32" height="25" fill="#9DBB94"></rect>
+<line x1="146" y1="72" x2="144" y2="60" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"></line>
+<line x1="158" y1="72" x2="160" y2="60" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"></line>
+<circle cx="144" cy="56" r="6" fill="#FFFFFF" stroke="#1F2A24" stroke-width="3"></circle>
+<circle cx="160" cy="56" r="6" fill="#FFFFFF" stroke="#1F2A24" stroke-width="3"></circle>
+<circle cx="145" cy="58" r="2.5" fill="#1F2A24"></circle>
+<circle cx="161" cy="58" r="2.5" fill="#1F2A24"></circle>
+<ellipse cx="141" cy="92" rx="5" ry="3.5" fill="#E8A9A0"></ellipse>
+<ellipse cx="164" cy="92" rx="5" ry="3.5" fill="#E8A9A0"></ellipse>
+<path d="M149 98 Q152 100 155 98" fill="none" stroke="#1F2A24" stroke-width="2.5" stroke-linecap="round"></path>
+<circle cx="78" cy="70" r="42" fill="#D69A6A" stroke="#1F2A24" stroke-width="3"></circle>
+<path d="M78 70 a5 5 0 1 0 5 5 a11 11 0 1 0 -11 -11 a19 19 0 1 0 19 19 a28 28 0 1 0 -28 -28" fill="none" stroke="#1F2A24" stroke-width="2.5" stroke-linecap="round"></path>
+</svg>
+```
+
+### tuck-tucked.svg
+
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 130" width="160" height="130" role="img" aria-label="Tuck fully retracted into its shell, resting">
+<ellipse cx="80" cy="118" rx="58" ry="6" fill="#1F2A24" opacity="0.12"></ellipse>
+<circle cx="80" cy="66" r="50" fill="#D69A6A" stroke="#1F2A24" stroke-width="3"></circle>
+<path d="M80 66 a6 6 0 1 0 6 6 a13 13 0 1 0 -13 -13 a22 22 0 1 0 22 22 a33 33 0 1 0 -33 -33" fill="none" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"></path>
+<text x="128" y="26" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="16" font-weight="600" fill="#1F2A24">zZ</text>
+</svg>
+```
+
+### tuck-tucked-white.svg
+
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 130" width="160" height="130" role="img" aria-label="Tuck tucked into its shell">
+<ellipse cx="80" cy="120" rx="56" ry="6" fill="#1F2A24" opacity="0.15"></ellipse>
+<circle cx="80" cy="66" r="50" fill="#FFFFFF" stroke="#1F2A24" stroke-width="3"></circle>
+<path d="M80 66 a6 6 0 1 0 6 6 a13 13 0 1 0 -13 -13 a22 22 0 1 0 22 22 a33 33 0 1 0 -33 -33" fill="none" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"></path>
+</svg>
+```
+
+### tuck-avatar.svg
+
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Round profile avatar of Tuck">
+<circle cx="60" cy="60" r="56" fill="#9DBB94" stroke="#1F2A24" stroke-width="3"></circle>
+<circle cx="50" cy="70" r="28" fill="#D69A6A" stroke="#1F2A24" stroke-width="3"></circle>
+<path d="M50 70 a4 4 0 1 0 4 4 a9 9 0 1 0 -9 -9 a15 15 0 1 0 15 15" fill="none" stroke="#1F2A24" stroke-width="2.5" stroke-linecap="round"></path>
+<line x1="80" y1="58" x2="76" y2="32" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"></line>
+<line x1="88" y1="58" x2="94" y2="33" stroke="#1F2A24" stroke-width="3" stroke-linecap="round"></line>
+<circle cx="76" cy="29" r="6" fill="#FFFFFF" stroke="#1F2A24" stroke-width="2.5"></circle>
+<circle cx="94" cy="30" r="6" fill="#FFFFFF" stroke="#1F2A24" stroke-width="2.5"></circle>
+<circle cx="77" cy="30" r="2.5" fill="#1F2A24"></circle>
+<circle cx="95" cy="31" r="2.5" fill="#1F2A24"></circle>
+</svg>
+```
+
+## Appendix B: Component code
+
+The React bundle (`components/bundle.js`, exposes `window.Tuck`) and its stylesheet (`components/bundle.css`), copied from the design system. The stylesheet reads the color, spacing, radius and stroke tokens as CSS variables (`--canvas`, `--space-10`, and so on), plus `--font-sans` and `--font-mono`.
+
+### bundle.js
+
+```js
+/* @ds-bundle: {"format":4,"namespace":"Tuck","components":[{"name":"TuckFace"},{"name":"MoodChip"},{"name":"ExpressionCard"},{"name":"Terminal"},{"name":"SocialTile"},{"name":"TrustNote"}]} */
+(function () {
+  var React = window.React;
+  var h = React.createElement;
+  var FACES = {
+    map: "@", awake: "@_oo", happy: "@_^^", sleepy: "@_--", sad: "@_;;",
+    surprised: "@_OO", stressed: "@_><", shy: "@_", resting: "(@)", progress: "...@_^^"
+  };
+  var SAY = {
+    "@": "tuck", "@_oo": "tuck, awake", "@_^^": "tuck, happy", "@_--": "tuck, sleepy", "@_;;": "tuck, sad",
+    "@_OO": "tuck, surprised", "@_><": "tuck, stressed", "@_": "tuck, shy", "(@)": "tuck, resting", "...@_^^": "tuck, making progress"
+  };
+  function say(face) { return SAY[face] || ("tuck, " + face); }
+  function cx() { return Array.prototype.filter.call(arguments, Boolean).join(" "); }
+
+  function TuckFace(p) {
+    var mood = p.mood || "awake";
+    return h("span", {
+      className: cx("tk-face", "tk-face-" + (p.size || "md"), p.onDark && "tk-face-dark", p.className),
+      role: "img", "aria-label": p.label || say(FACES[mood] != null ? FACES[mood] : mood)
+    }, FACES[mood] != null ? FACES[mood] : mood);
+  }
+
+  function MoodChip(p) {
+    return h("button", {
+      type: "button",
+      className: cx("tk-chip", p.selected && "is-selected", p.wide && "tk-chip-wide", p.className),
+      "aria-pressed": p.selected ? "true" : "false",
+      onClick: p.onClick, disabled: p.disabled
+    }, h("span", { className: "tk-chip-face", "aria-hidden": "true" }, FACES[p.mood] || p.mood), h("span", null, p.children));
+  }
+
+  function ExpressionCard(p) {
+    var mood = p.mood || "happy";
+    return h("figure", { className: cx("tk-card", p.className) },
+      h("div", { className: "tk-card-art" }, p.art || h("span", { className: "tk-card-placeholder", role: "img", "aria-label": say(FACES[mood]) }, FACES[mood])),
+      h("figcaption", { className: "tk-card-foot" },
+        h("span", { className: "tk-card-name" }, p.name || mood),
+        h("code", { className: "tk-card-code", "aria-hidden": "true" }, FACES[mood])));
+  }
+
+  function Terminal(p) {
+    var lines = p.lines || [];
+    return h("div", { className: cx("tk-term", p.className) },
+      h("div", { className: "tk-term-bar" },
+        h("span", { className: "tk-dots", "aria-hidden": "true" }, h("span", { className: "tk-dot tk-dot-1" }), h("span", { className: "tk-dot tk-dot-2" }), h("span", { className: "tk-dot tk-dot-3" })),
+        h("span", { className: "tk-term-path" }, p.path || "~/tuck")),
+      h("div", { className: "tk-term-body", tabIndex: 0, role: "region", "aria-label": p.label || ("terminal, " + (p.path || "~/tuck")) },
+        lines.map(function (l, i) {
+          if (l.type === "cmd") return h("div", { key: i, className: "tk-term-line tk-term-cmd" }, "$ " + l.text);
+          if (l.type === "gap") return h("div", { key: i, className: "tk-term-gap" });
+          if (l.type === "dim") return h("div", { key: i, className: "tk-term-line tk-term-dim" }, l.text);
+          return h("div", { key: i, className: "tk-term-line" },
+            l.face ? h("span", { className: "tk-term-face", role: "img", "aria-label": l.faceLabel || say(FACES[l.face] || l.face) }, FACES[l.face] || l.face) : null,
+            l.face ? "  " : null, l.text);
+        }),
+        p.children));
+  }
+
+  function SocialTile(p) {
+    return h("div", { className: cx("tk-tile", p.className) },
+      p.art ? h("div", { className: "tk-tile-art" }, p.art) : null,
+      h("p", { className: "tk-tile-head" }, p.headline || "Some days are shell days."),
+      p.sub !== null ? h("p", { className: "tk-tile-sub" }, p.sub || "That counts too.") : null,
+      p.signature ? h("p", { className: "tk-tile-sig" }, p.signature) : null);
+  }
+
+  function TrustNote(p) {
+    return h("p", { className: cx("tk-trust", p.className) },
+      p.children || ["Stored on this device only. Need to talk to someone? Call or text ", h("a", { key: "988", href: "tel:988" }, "988"), "."]);
+  }
+
+  window.Tuck = window.Tuck || {};
+  Object.assign(window.Tuck, { TuckFace: TuckFace, MoodChip: MoodChip, ExpressionCard: ExpressionCard, Terminal: Terminal, SocialTile: SocialTile, TrustNote: TrustNote, FACES: FACES });
+})();
+```
+
+### bundle.css
+
+```css
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap");
+
+body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var(--font-sans); }
+.tk-row { display: flex; flex-wrap: wrap; gap: var(--space-10); align-items: flex-start; padding: var(--space-20); }
+.tk-stack { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-10); padding: var(--space-20); }
+
+/* TuckFace */
+.tk-face { font-family: var(--font-mono); white-space: pre; color: var(--ink); }
+.tk-face-sm { font-size: 13px; }
+.tk-face-md { font-size: 15px; }
+.tk-face-lg { font-size: 22px; }
+.tk-face-xl { font-size: 40px; }
+.tk-face-dark { color: var(--term-tuck); }
+
+/* MoodChip */
+.tk-chip {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-8);
+  min-height: 52px; padding: 0 var(--space-16);
+  font: 400 16px/1.4 var(--font-mono); color: var(--ink);
+  background: var(--surface); border: var(--stroke-ui) solid var(--ink); border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+.tk-chip:hover { background: var(--canvas); }
+.tk-chip.is-selected { background: var(--caramel-wash); border-width: 4px; padding: 0 14px; font-weight: 600; }
+.tk-chip:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.tk-chip:disabled { cursor: default; color: var(--ink-muted); border-color: var(--ink-muted); }
+.tk-chip-wide { width: 100%; }
+.tk-chip-face { white-space: pre; }
+
+/* ExpressionCard */
+.tk-card {
+  margin: 0; display: flex; flex-direction: column; min-width: 0;
+  background: var(--surface); border: var(--stroke-ui) solid var(--ink); border-radius: var(--radius-lg);
+  padding: var(--space-16) var(--space-20);
+}
+.tk-card-art { flex: 1; min-height: 120px; display: flex; align-items: center; justify-content: center; background: var(--art-ground); border-radius: var(--radius-sm); }
+.tk-card-placeholder { font: 400 40px/1 var(--font-mono); white-space: pre; color: var(--ink); }
+.tk-card-foot { display: flex; justify-content: space-between; align-items: baseline; margin-top: var(--space-16); }
+.tk-card-name { font: 600 18px/1.3 var(--font-sans); }
+.tk-card-art img { display: block; width: 100%; max-height: 150px; }
+.tk-card-code { font: 400 16px/1.4 var(--font-mono); white-space: pre; }
+
+/* Terminal */
+.tk-term { max-width: 100%; min-width: 0; background: var(--term-bg); border: var(--stroke-ui) solid var(--term-edge); border-radius: var(--radius-md); overflow: hidden; color: var(--term-text); font: 400 15px/1.6 var(--font-mono); }
+.tk-term-bar { display: flex; align-items: center; gap: var(--space-8); padding: 12px var(--space-16); background: var(--term-bar); }
+.tk-dots { display: flex; gap: var(--space-8); }
+.tk-dot { width: 12px; height: 12px; border-radius: var(--radius-full); }
+.tk-dot-1 { background: var(--blush); }
+.tk-dot-2 { background: var(--butter); }
+.tk-dot-3 { background: var(--moss); }
+.tk-term-path { margin-left: var(--space-10); color: var(--term-dim); font-size: 13px; }
+.tk-term-body:focus-visible { outline: 2px solid var(--term-text); outline-offset: -4px; }
+.tk-term-body { padding: var(--space-20) var(--space-20) var(--space-24); white-space: pre; overflow-x: auto; }
+.tk-term-gap { height: 1.6em; }
+.tk-term-face { color: var(--term-tuck); }
+.tk-term-dim { color: var(--term-dim); }
+
+/* SocialTile */
+.tk-tile {
+  aspect-ratio: 1 / 1; width: 100%; max-width: 360px; box-sizing: border-box;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+  gap: var(--space-12); padding: var(--space-20); background: var(--caramel); color: var(--on-caramel);
+  border: var(--stroke-ui) solid var(--on-caramel); border-radius: var(--radius-lg);
+}
+.tk-tile-art img { display: block; width: 150px; height: auto; }
+.tk-tile-head { margin: 0; font: 800 26px/1.15 var(--font-sans); }
+.tk-tile-sub { margin: 0; font: 600 15px/1.4 var(--font-sans); }
+.tk-tile-sig { margin: 0; font: 400 13px/1.45 var(--font-sans); }
+
+/* TrustNote */
+.tk-trust { margin: 0; font: 400 13px/1.45 var(--font-sans); color: var(--ink-muted); max-width: 46ch; }
+
+a { color: var(--link); text-decoration: underline; text-underline-offset: 2px; }
+a:hover { color: var(--ink); }
+.tk-tile :focus-visible { outline-color: var(--on-caramel); }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+@media (forced-colors: active) { .tk-chip.is-selected { border-color: Highlight; } }
+```
