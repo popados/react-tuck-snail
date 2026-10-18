@@ -17,7 +17,7 @@
  * Tuck the Snail design tokens. Source of truth: docs/tuck-design-system.md.
  * Raw values live in CSS variables so the dark theme can swap them; the
  * @theme blocks below map them to Tailwind utilities (bg-canvas, text-ink,
- * border-ink, rounded-lg, text-heading, font-mono, p-24, gap-10, ...).
+ * border-line, rounded-lg, text-heading, font-mono, p-24, gap-10, ...).
  * Tuck's art colors, the mood scale and the terminal are the same in both themes.
  */
 :root {
@@ -121,7 +121,8 @@
 
 /*
  * Low stimulation palette (docs/mascot-tuck-snail-palette-variants.md, section 2),
- * scoped to any element with data-palette="low". Same token names, new values, so
+ * on any element with data-palette="low". index.html sets it on <html>, so it is the
+ * site-wide scheme; remove it there to go back to the core palette. Same token names, new values, so
  * every component switches with no code changes. Tuck's art colors and the mood
  * scale stay fixed. Variant names map to core ones: selected = caramel-wash,
  * done-wash = moss-wash, look-wash = butter-wash, info-wash = tear-wash.
@@ -148,6 +149,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
+  :root[data-palette='low']:not([data-theme='light']),
   :root:not([data-theme='light']) [data-palette='low'] {
     --canvas: #1c1f1d;
     --surface: #232725;
@@ -170,6 +172,7 @@
   }
 }
 
+:root[data-theme='dark'][data-palette='low'],
 :root[data-theme='dark'] [data-palette='low'] {
   --canvas: #1c1f1d;
   --surface: #232725;
@@ -289,6 +292,45 @@
   --radius-md: 16px;
   --radius-lg: 20px;
   --radius-xl: 28px;
+}
+
+/*
+ * hero-scene: continues the background of public/mascot/tuck-hero.svg past the
+ * art's edges, so a full-width plate reads as one scene. Colors and band heights
+ * are copied from the SVG (viewBox height 190): hills meet each edge at the same
+ * height the art does (left 138 and 152, right 124 and 146), then the flat ground
+ * from 162 down. Works when the image is the plate's only content, bottom-aligned.
+ * Art colors, so the same in both themes.
+ */
+@utility hero-scene {
+  --scene-sky: #eef0ea;
+  --scene-hill: #d7e2d0;
+  --scene-hill-low: #c6d6be;
+  --scene-ground: #dde5d5;
+  --scene-ground-line: #bcc3b5;
+  background-color: var(--scene-sky);
+  background-image:
+    linear-gradient(
+      to bottom,
+      transparent 72.63%,
+      var(--scene-hill) 72.63% 80%,
+      var(--scene-hill-low) 80% 84.7%,
+      var(--scene-ground-line) 84.7% 85.8%,
+      var(--scene-ground) 85.8%
+    ),
+    linear-gradient(
+      to bottom,
+      transparent 65.26%,
+      var(--scene-hill) 65.26% 76.84%,
+      var(--scene-hill-low) 76.84% 84.7%,
+      var(--scene-ground-line) 84.7% 85.8%,
+      var(--scene-ground) 85.8%
+    );
+  background-size: 50% 100%;
+  background-position:
+    left top,
+    right top;
+  background-repeat: no-repeat;
 }
 
 @layer base {

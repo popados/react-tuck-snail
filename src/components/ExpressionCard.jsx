@@ -7,7 +7,7 @@ export function ExpressionCard({ mood = 'happy', name, art, className }) {
   return (
     <figure
       className={cx(
-        'm-0 flex min-w-0 flex-col rounded-lg border-2 border-ink bg-surface px-20 py-16',
+        'm-0 flex min-w-0 flex-col rounded-lg border-2 border-line bg-surface px-20 py-16',
         className,
       )}
     >

@@ -1,3 +1,18 @@
+---
+stale-refs:
+  - source: docs\design-system\USING-IN-CODE.md
+    changed_at: "2026-10-18T00:54:59"
+    sections_changed: []
+    summary: externally modified
+  - source: docs\tuck-design-system.md
+    changed_at: "2026-10-18T00:54:59"
+    sections_changed: []
+    summary: externally modified
+---
+
+
+
+
 # Tuck the Snail
 
 Slow progress is still progress.

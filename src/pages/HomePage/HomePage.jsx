@@ -53,10 +53,12 @@ export function HomePage() {
           <CheckIn />
           {/* Full-width row, so the art doesn't stretch the text column and
               leave empty space under the check-in card. */}
-          <div className="w-full rounded-lg bg-art-ground p-16 md:col-span-2">
+          {/* The plate carries on the scene's sky and ground (hero-scene in
+              index.css), so the background fills the row, not just the art. */}
+          <div className="hero-scene w-full overflow-hidden rounded-lg md:col-span-2">
             <img
               src="/mascot/tuck-hero.svg"
-              alt="Tuck the snail, side view, smiling with eye stalks up"
+              alt="Tuck the snail, side view, smiling with eye stalks up, in a quiet garden"
               className="mx-auto block h-auto w-full max-w-[440px]"
             />
           </div>
@@ -91,7 +93,7 @@ export function HomePage() {
               you. It's a snail.
             </p>
           </div>
-          <Terminal lines={TERMINAL_LINES} />
+          <Terminal quiet lines={TERMINAL_LINES} />
         </section>
 
         <section className="grid items-center gap-32 md:grid-cols-2">
@@ -109,7 +111,7 @@ export function HomePage() {
         </section>
       </main>
 
-      <footer className="border-t-2 border-ink">
+      <footer className="border-t-2 border-line">
         <div className="mx-auto flex max-w-page flex-wrap justify-between gap-16 px-16 py-24 text-caption text-ink-muted md:px-32">
           <p className="m-0">
             Tuck Check-in is not a substitute for care. Need to talk to someone? Call or text{' '}

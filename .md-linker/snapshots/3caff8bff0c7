@@ -1,0 +1,61 @@
+# Using the Tuck design system in code
+
+The brand book, every token value and the component rules are in [`docs/tuck-design-system.md`](../tuck-design-system.md). Read it before building UI. This page maps those tokens to the Tailwind classes this app uses.
+
+Tokens live in `src/index.css` as CSS variables, with light values on `:root` and dark values under `prefers-color-scheme: dark` and `[data-theme="dark"]`. Tailwind's default palette is off, so only token classes exist. Never type a hex value in a component.
+
+The site uses the low stimulation palette (section 2 of `docs/mascot-tuck-snail-palette-variants.md`): `index.html` sets `data-palette="low"` on `<html>`, which swaps the token values but keeps the names. Remove that attribute to go back to the core palette.
+
+## Color
+
+| Token                                   | Classes                                                                                                                 |
+| --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `canvas`, `surface`                     | `bg-canvas`, `bg-surface`                                                                                               |
+| `ink`, `ink-muted`                      | `text-ink`, `text-ink-muted`; outlines use `border-line`                                                                            |
+| `caramel-text`, `link`                  | `text-caramel-text`, `text-link` (plain `<a>` is already styled)                                                        |
+| `caramel`, `on-caramel`                 | `bg-caramel` with `text-on-caramel` and `border-on-caramel`                                                             |
+| `caramel-wash`                          | `bg-caramel-wash`, selected chip only (with `border-4` and `font-semibold`)                                             |
+| `moss`, `blush`, `butter`, `tear`       | `bg-moss` and so on: fills only, never text                                                                             |
+| `art-ground`                            | `bg-art-ground`, the plate behind every mascot SVG                                                                      |
+| `moss-wash`, `butter-wash`, `tear-wash` | `bg-moss-wash` (done), `bg-butter-wash` (needs a look), `bg-tear-wash` (info)                                           |
+| `mood-good` … `mood-shell`              | `bg-mood-good` and so on, in charts only: outline in `ink`, label with the face                                         |
+| `term-*`                                | `bg-term-bg`, `bg-term-bar`, `border-term-edge`, `text-term-text`, `text-term-dim`, `text-term-tuck`, `text-term-faint` |
+
+## Type
+
+| Style     | Class                     | Style                                     | Class                                |
+| --------- | ------------------------- | ----------------------------------------- | ------------------------------------ |
+| `display` | `text-display`            | `note`                                    | `text-note`                          |
+| `title`   | `text-title`              | `panel-label`                             | `text-panel-label`                   |
+| `heading` | `text-heading`            | `caption`                                 | `text-caption`                       |
+| `lead`    | `text-lead`               | `eyebrow`                                 | `text-eyebrow uppercase`             |
+| `label`   | `text-label`              | `mono-lg`, `mono-chip`, `mono`, `mono-sm` | `font-mono text-mono-chip` and so on |
+| `body`    | `text-body` (the default) |                                           |                                      |
+
+Each class sets size, line height and weight together. `font-sans` (Bricolage Grotesque) is the default; use `font-mono` (JetBrains Mono) for anything Tuck types.
+
+## Space, radius and stroke
+
+- The spacing base is 1px, so utilities read as the tokens: `gap-10` is `space-10`, `p-24` is `space-24`, `px-64` is `space-64`. Stay on the scale: 6, 8, 10, 12, 16, 20, 24, 32, 48, 64.
+- Radius: `rounded-sm` (14, chips), `rounded-md` (16, terminal), `rounded-lg` (20, cards and tiles), `rounded-xl` (28, phone frame), `rounded-full`.
+- Outlines: `border-2 border-ink` (`stroke-ui`). No shadows.
+- Widths: `max-w-page` (1120px page column), `max-w-phone` (420px check-in card).
+
+## Components
+
+All six are in `src/components/`, each with a test:
+
+| Component        | Use                                                                     |
+| ---------------- | ----------------------------------------------------------------------- |
+| `TuckFace`       | Tuck's ASCII face, read aloud as words                                  |
+| `MoodChip`       | A check-in answer; wrap the set in `role="group"` named by the question |
+| `ExpressionCard` | An expression's art on the `art-ground` plate, with its name and code   |
+| `Terminal`       | The tuckshell window; long lines scroll inside it                       |
+| `SocialTile`     | A caramel post tile; art is `tuck-tucked-white.svg` only                |
+| `TrustNote`      | "Stored on this device only… 988", on every check-in surface            |
+
+The face map (`FACES`) and screen-reader words are in `src/lib/faces.js`.
+
+## Mascot art
+
+The ten SVGs are in `public/mascot/`, copied byte for byte from the design system. Use them as `<img src="/mascot/tuck-happy.svg" alt="Tuck happy, stalks up, smiling" />`. Never redraw, recolor or tint them, and always set them on `art-ground` (or on `caramel`, for the white-shell file only). There is no icon set: use words and Tuck's faces.

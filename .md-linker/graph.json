@@ -2,7 +2,7 @@
   "version": 1,
   "files": {
     "README.md": {
-      "content_hash": "sha256:c925a222bba24efa",
+      "content_hash": "sha256:f6d2b4f538fd3586",
       "headings": [
         "Tuck the Snail",
         "Meet Tuck",
@@ -17,170 +17,86 @@
           "target": "images/designs/Model%20sheet.png",
           "section": null,
           "type": "markdown",
-          "line": 9
+          "line": 24
         },
         {
           "target": "images\\designs\\Expressions.png",
           "section": null,
           "type": "markdown",
-          "line": 15
+          "line": 30
         },
         {
           "target": "images/designs/Tuck%20in%20context.png",
           "section": null,
           "type": "markdown",
-          "line": 32
+          "line": 47
         },
         {
           "target": "images/mockups/LandingPage/Landing%20page%20%C2%B7%20desktop.png",
           "section": null,
           "type": "markdown",
-          "line": 41
+          "line": 56
         },
         {
           "target": "images/mockups/HomePages_Dark_Palette",
           "section": null,
           "type": "markdown",
-          "line": 41
+          "line": 56
         },
         {
           "target": "docs\\design-system\\USING-IN-CODE.md",
           "section": null,
           "type": "markdown",
-          "line": 72
+          "line": 87
         },
         {
           "target": "docs/mascot-tuck-snail.md",
           "section": null,
           "type": "markdown",
-          "line": 78
+          "line": 93
         },
         {
           "target": "docs\\tuck-design-system.md",
           "section": null,
           "type": "markdown",
-          "line": 79
+          "line": 94
         },
         {
           "target": "docs\\mascot-tuck-snail-palette-variants.md",
           "section": null,
           "type": "markdown",
-          "line": 80
+          "line": 95
         },
         {
           "target": "docs\\mascot-tuck-snail-mood-palettes.md",
           "section": null,
           "type": "markdown",
-          "line": 81
+          "line": 96
         },
         {
           "target": "docs\\markdown\\mascot-tuck-snail-product-strategy.md",
           "section": null,
           "type": "markdown",
-          "line": 82
+          "line": 97
         },
         {
           "target": "docs\\markdown\\mascot-tuck-snail-campaign-plan-launch.md",
           "section": null,
           "type": "markdown",
-          "line": 83
+          "line": 98
         },
         {
           "target": "docs\\markdown\\mascot-tuck-snail-topic-cluster.md",
           "section": null,
           "type": "markdown",
-          "line": 84
+          "line": 99
         }
       ],
       "frontmatter_deps": [],
-      "last_indexed": "2026-10-17T19:43:33.629265+00:00"
-    },
-    "dist\\logos\\README.md": {
-      "content_hash": "sha256:5b418a3810b9ca2c",
-      "headings": [
-        "Provider logos"
-      ],
-      "outgoing": [],
-      "frontmatter_deps": [],
-      "last_indexed": "2026-10-17T16:24:37.403828+00:00"
-    },
-    "docs\\design-system\\assets\\Icons.md": {
-      "content_hash": "sha256:848f682e90c79654",
-      "headings": [],
-      "outgoing": [],
-      "frontmatter_deps": [],
-      "last_indexed": "2026-10-17T16:24:37.410840+00:00"
-    },
-    "docs\\design-system\\assets\\Logos.md": {
-      "content_hash": "sha256:63df4c587cff7b4e",
-      "headings": [],
-      "outgoing": [],
-      "frontmatter_deps": [],
-      "last_indexed": "2026-10-17T16:24:37.417901+00:00"
-    },
-    "docs\\design-system\\components\\Alert.md": {
-      "content_hash": "sha256:eb50434f1cb66db4",
-      "headings": [],
-      "outgoing": [],
-      "frontmatter_deps": [],
-      "last_indexed": "2026-10-17T16:24:37.424336+00:00"
-    },
-    "docs\\design-system\\components\\Button.md": {
-      "content_hash": "sha256:b32cebc657f62665",
-      "headings": [],
-      "outgoing": [],
-      "frontmatter_deps": [],
-      "last_indexed": "2026-10-17T16:24:37.430766+00:00"
-    },
-    "docs\\design-system\\components\\Divider.md": {
-      "content_hash": "sha256:df2d6d7ad1319721",
-      "headings": [],
-      "outgoing": [],
-      "frontmatter_deps": [],
-      "last_indexed": "2026-10-17T16:24:37.435697+00:00"
-    },
-    "docs\\design-system\\components\\Highlight.md": {
-      "content_hash": "sha256:b6a6237eb815a46e",
-      "headings": [],
-      "outgoing": [],
-      "frontmatter_deps": [],
-      "last_indexed": "2026-10-17T16:24:37.441291+00:00"
-    },
-    "docs\\design-system\\components\\Icon.md": {
-      "content_hash": "sha256:6b484db4f5dc076a",
-      "headings": [],
-      "outgoing": [],
-      "frontmatter_deps": [],
-      "last_indexed": "2026-10-17T16:24:37.447461+00:00"
-    },
-    "docs\\design-system\\components\\InstitutionPicker.md": {
-      "content_hash": "sha256:897dc71d72da06f2",
-      "headings": [],
-      "outgoing": [],
-      "frontmatter_deps": [],
-      "last_indexed": "2026-10-17T16:24:37.453696+00:00"
-    },
-    "docs\\design-system\\components\\TextField.md": {
-      "content_hash": "sha256:05d5e66173bc81a9",
-      "headings": [],
-      "outgoing": [],
-      "frontmatter_deps": [],
-      "last_indexed": "2026-10-17T16:24:37.459371+00:00"
-    },
-    "docs\\design-system\\README.md": {
-      "content_hash": "sha256:e6f317f5ad88c2ae",
-      "headings": [
-        "Content fundamentals",
-        "Visual foundations",
-        "Components",
-        "Iconography and logos"
-      ],
-      "outgoing": [],
-      "frontmatter_deps": [],
-      "last_indexed": "2026-10-17T16:24:37.465909+00:00"
+      "last_indexed": "2026-10-18T00:55:01.665998+00:00"
     },
     "docs\\design-system\\USING-IN-CODE.md": {
-      "content_hash": "sha256:83e566b019e33afa",
+      "content_hash": "sha256:8f703c6386f3afbc",
       "headings": [
         "Using the Tuck design system in code",
         "Color",
@@ -194,11 +110,11 @@
           "target": "docs\\tuck-design-system.md",
           "section": null,
           "type": "markdown",
-          "line": 3
+          "line": 12
         }
       ],
       "frontmatter_deps": [],
-      "last_indexed": "2026-10-17T18:26:28.738151+00:00"
+      "last_indexed": "2026-10-18T00:54:59.125163+00:00"
     },
     "docs\\markdown\\mascot-tuck-snail-campaign-plan-launch.md": {
       "content_hash": "sha256:821b4b3325fd7247",
@@ -364,46 +280,8 @@
       "frontmatter_deps": [],
       "last_indexed": "2026-10-17T16:24:37.545465+00:00"
     },
-    "docs\\mascot-tuck-snail.md": {
-      "content_hash": "sha256:891b204d1ee8c814",
-      "headings": [
-        "Tuck the Snail: Character Build",
-        "Overview",
-        "Name check",
-        "Personality traits",
-        "Voice examples for posts",
-        "Design notes",
-        "Colors and how the design system works with the app",
-        "The colors",
-        "How the design system plugs into the app",
-        "Round 2: emotion, wants and versions",
-        "Emotion kit",
-        "What Tuck wants",
-        "Why Tuck codes (origin comic)",
-        "Three versions, one shell",
-        "Round 3: design system and launch kit",
-        "The design system",
-        "Color",
-        "Accessibility",
-        "Theme ideas for later",
-        "Round 4: home pages and the Today screen brief",
-        "Five home page layouts",
-        "Product statement (as given)",
-        "Design brief: the Today screen (Tuck Check-in)",
-        "Round 5: palette variants and the check-in prototype",
-        "Five palette variants",
-        "Mood palette rules",
-        "Tuck Check-in Prototype (v0.1)",
-        "Planning docs",
-        "Next steps",
-        "Sources"
-      ],
-      "outgoing": [],
-      "frontmatter_deps": [],
-      "last_indexed": "2026-10-17T16:24:37.546951+00:00"
-    },
     "docs\\tuck-design-system.md": {
-      "content_hash": "sha256:f062b00609ec2674",
+      "content_hash": "sha256:ca93c02481efb8c1",
       "headings": [
         "Tuck the Snail design system",
         "Contents",
@@ -431,11 +309,25 @@
         "SocialTile",
         "TrustNote",
         "Types",
-        "Mascot assets"
+        "Mascot assets",
+        "Appendix A: Mascot SVG source",
+        "tuck-hero.svg",
+        "tuck-happy.svg",
+        "tuck-sleepy.svg",
+        "tuck-sad.svg",
+        "tuck-surprised.svg",
+        "tuck-stressed.svg",
+        "tuck-shy.svg",
+        "tuck-tucked.svg",
+        "tuck-tucked-white.svg",
+        "tuck-avatar.svg",
+        "Appendix B: Component code",
+        "bundle.js",
+        "bundle.css"
       ],
       "outgoing": [],
       "frontmatter_deps": [],
-      "last_indexed": "2026-10-17T16:24:37.554970+00:00"
+      "last_indexed": "2026-10-18T00:54:59.126202+00:00"
     },
     "node_modules\\@adobe\\css-tools\\docs\\API.md": {
       "content_hash": "sha256:e4d9c7ed54fe7c47",
@@ -12881,14 +12773,78 @@
       "frontmatter_deps": [],
       "last_indexed": "2026-10-17T16:24:41.672940+00:00"
     },
-    "public\\logos\\README.md": {
-      "content_hash": "sha256:5b418a3810b9ca2c",
+    "docs\\mascot-tuck-snaitwol.md": {
+      "content_hash": "sha256:891b204d1ee8c814",
       "headings": [
-        "Provider logos"
+        "Tuck the Snail: Character Build",
+        "Overview",
+        "Name check",
+        "Personality traits",
+        "Voice examples for posts",
+        "Design notes",
+        "Colors and how the design system works with the app",
+        "The colors",
+        "How the design system plugs into the app",
+        "Round 2: emotion, wants and versions",
+        "Emotion kit",
+        "What Tuck wants",
+        "Why Tuck codes (origin comic)",
+        "Three versions, one shell",
+        "Round 3: design system and launch kit",
+        "The design system",
+        "Color",
+        "Accessibility",
+        "Theme ideas for later",
+        "Round 4: home pages and the Today screen brief",
+        "Five home page layouts",
+        "Product statement (as given)",
+        "Design brief: the Today screen (Tuck Check-in)",
+        "Round 5: palette variants and the check-in prototype",
+        "Five palette variants",
+        "Mood palette rules",
+        "Tuck Check-in Prototype (v0.1)",
+        "Planning docs",
+        "Next steps",
+        "Sources"
       ],
       "outgoing": [],
       "frontmatter_deps": [],
-      "last_indexed": "2026-10-17T16:24:41.674509+00:00"
+      "last_indexed": "2026-10-18T00:54:59.127217+00:00"
+    },
+    "docs\\tuck-design-system-two.md": {
+      "content_hash": "sha256:f062b00609ec2674",
+      "headings": [
+        "Tuck the Snail design system",
+        "Contents",
+        "Brand book",
+        "Naming",
+        "Content fundamentals",
+        "The text forms",
+        "Visual foundations",
+        "Accessibility",
+        "Mascot and imagery",
+        "Surfaces",
+        "Color tokens",
+        "Type",
+        "Sans (`sans`)",
+        "Mono (`mono`)",
+        "Spacing, radius and stroke",
+        "Spacing",
+        "Radius",
+        "Stroke",
+        "Components",
+        "TuckFace",
+        "MoodChip",
+        "ExpressionCard",
+        "Terminal",
+        "SocialTile",
+        "TrustNote",
+        "Types",
+        "Mascot assets"
+      ],
+      "outgoing": [],
+      "frontmatter_deps": [],
+      "last_indexed": "2026-10-18T00:54:59.127905+00:00"
     }
   }
 }

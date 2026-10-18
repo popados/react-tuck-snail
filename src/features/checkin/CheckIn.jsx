@@ -20,7 +20,7 @@ export function CheckIn() {
   return (
     <section
       aria-labelledby={headingId}
-      className="flex w-full max-w-phone flex-col gap-16 rounded-xl border-2 border-ink bg-surface p-24"
+      className="flex w-full max-w-phone flex-col gap-16 rounded-xl border-2 border-line bg-surface p-24"
     >
       <p className="m-0 text-caption text-ink-muted">{WEEKDAY.format(new Date())} · check-in</p>
       <h2 id={headingId} className="m-0 text-heading">

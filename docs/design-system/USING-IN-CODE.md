@@ -1,15 +1,26 @@
+---
+stale-refs:
+  - source: docs\tuck-design-system.md
+    changed_at: "2026-10-18T00:54:59"
+    sections_changed: []
+    summary: externally modified
+---
+
+
 # Using the Tuck design system in code
 
 The brand book, every token value and the component rules are in [`docs/tuck-design-system.md`](../tuck-design-system.md). Read it before building UI. This page maps those tokens to the Tailwind classes this app uses.
 
 Tokens live in `src/index.css` as CSS variables, with light values on `:root` and dark values under `prefers-color-scheme: dark` and `[data-theme="dark"]`. Tailwind's default palette is off, so only token classes exist. Never type a hex value in a component.
 
+The site uses the low stimulation palette (section 2 of `docs/mascot-tuck-snail-palette-variants.md`): `index.html` sets `data-palette="low"` on `<html>`, which swaps the token values but keeps the names. Remove that attribute to go back to the core palette.
+
 ## Color
 
 | Token                                   | Classes                                                                                                                 |
 | --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | `canvas`, `surface`                     | `bg-canvas`, `bg-surface`                                                                                               |
-| `ink`, `ink-muted`                      | `text-ink`, `text-ink-muted`, `border-ink`                                                                              |
+| `ink`, `ink-muted`                      | `text-ink`, `text-ink-muted`; outlines use `border-line`                                                                |
 | `caramel-text`, `link`                  | `text-caramel-text`, `text-link` (plain `<a>` is already styled)                                                        |
 | `caramel`, `on-caramel`                 | `bg-caramel` with `text-on-caramel` and `border-on-caramel`                                                             |
 | `caramel-wash`                          | `bg-caramel-wash`, selected chip only (with `border-4` and `font-semibold`)                                             |
@@ -36,7 +47,7 @@ Each class sets size, line height and weight together. `font-sans` (Bricolage Gr
 
 - The spacing base is 1px, so utilities read as the tokens: `gap-10` is `space-10`, `p-24` is `space-24`, `px-64` is `space-64`. Stay on the scale: 6, 8, 10, 12, 16, 20, 24, 32, 48, 64.
 - Radius: `rounded-sm` (14, chips), `rounded-md` (16, terminal), `rounded-lg` (20, cards and tiles), `rounded-xl` (28, phone frame), `rounded-full`.
-- Outlines: `border-2 border-ink` (`stroke-ui`). No shadows.
+- Outlines: `border-2 border-line` (`stroke-ui`). `line` is `ink` in the core palette and a softer grey in low stimulation. No shadows.
 - Widths: `max-w-page` (1120px page column), `max-w-phone` (420px check-in card).
 
 ## Components

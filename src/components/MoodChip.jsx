@@ -21,8 +21,8 @@ export function MoodChip({
       className={cx(
         'inline-flex min-h-[52px] cursor-pointer items-center justify-center gap-8 rounded-sm border-solid font-mono text-mono-chip text-ink',
         selected
-          ? 'border-4 border-ink bg-caramel-wash px-14 font-semibold'
-          : 'border-2 border-ink bg-surface px-16 hover:bg-canvas',
+          ? 'border-4 border-line bg-caramel-wash px-14 font-semibold'
+          : 'border-2 border-line bg-surface px-16 hover:bg-canvas',
         'disabled:cursor-default disabled:border-ink-muted disabled:text-ink-muted',
         wide && 'col-span-full w-full',
         className,
