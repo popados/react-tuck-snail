@@ -21,13 +21,32 @@ export function TopNav() {
         className="mx-auto flex flex-wrap items-center gap-x-16 gap-y-8 px-16 py-12 min-[821px]:px-32"
         onKeyDown={(e) => e.key === 'Escape' && setOpen(false)}
       >
-        <Link to="/" className="flex items-center gap-10 text-ink no-underline">
-          <img src="/mascot/tuck-avatar.svg" alt="" className="size-[34px]" />
-          <span className="text-[19px] leading-[1.2] font-extrabold">
-            Tuck Check-in
-            <small className="block text-[12px] font-normal text-ink-muted">
-              by Shellday Studio
-            </small>
+        {/* Brand: Tuck's avatar (copied from images/Tuck Calm Home/assets), the
+            pocket@shell wordmark (the first logo in
+            images/icon-logo/pocket-shell-logo-preview.png, without its leading @),
+            cropped with its background made clear (the dark-band crop swaps in for
+            dark mode), then >tuck@shell in mono. */}
+        <Link
+          to="/"
+          className="flex min-h-[44px] items-center gap-8 text-ink no-underline min-[821px]:gap-12"
+        >
+          <img
+            src="/logo/tuck-avatar.svg"
+            alt=""
+            className="block size-[28px] min-[821px]:size-[34px]"
+          />
+          <img
+            src="/logo/pocket-shell-wordmark.png"
+            alt="pocket@shell"
+            className="block h-[15px] w-auto min-[821px]:h-[22px] dark:hidden"
+          />
+          <img
+            src="/logo/pocket-shell-wordmark-dark.png"
+            alt="pocket@shell"
+            className="hidden h-[15px] w-auto min-[821px]:h-[22px] dark:block"
+          />
+          <span className="font-mono text-[13px] leading-none font-semibold min-[821px]:text-[19px]">
+            <span aria-hidden="true">&gt;</span>tuck@shell
           </span>
         </Link>
 

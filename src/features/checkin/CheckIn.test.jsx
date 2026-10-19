@@ -6,7 +6,7 @@ import { useCheckinStore } from '@/stores/useCheckinStore'
 describe('CheckIn', () => {
   beforeEach(() => {
     localStorage.clear()
-    useCheckinStore.setState({ entries: {}, details: {} })
+    useCheckinStore.setState({ entries: {}, details: {}, log: [] })
   })
 
   it('asks the question and groups the five answers under it', () => {

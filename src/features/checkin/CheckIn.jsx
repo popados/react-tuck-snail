@@ -2,7 +2,7 @@ import { useId } from 'react'
 import { MoodChip } from '@/components/MoodChip'
 import { TrustNote } from '@/components/TrustNote'
 import { CheckInReply } from '@/features/checkin/CheckInReply'
-import { MOODS, moodById } from '@/features/checkin/moods'
+import { MOODS, moodById } from '@/lib/moods'
 import { todayKey, useCheckinStore } from '@/stores/useCheckinStore'
 
 const WEEKDAY = new Intl.DateTimeFormat('en-US', { weekday: 'long' })

@@ -1,9 +1,30 @@
-import { CALM_MOODS, USUAL_MOODS, art } from '@/features/calm/calmMoods'
+import { CALM_MOODS, art } from '@/features/calm/calmMoods'
+import { MoodButtons } from '@/features/calm/MoodButtons'
 import { cx } from '@/lib/faces'
 
 const PANEL = 'rounded-[12px] bg-art-ground leading-none'
 
-function Picked({ id }) {
+// Shown in the panel once today's Tuck is saved: what it was stored as, and when.
+function SavedAs({ savedAs }) {
+  const time = savedAs.at
+    ? new Date(savedAs.at).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })
+    : null
+  return (
+    <p className="m-0 mt-8 inline-flex flex-wrap items-center gap-x-8 rounded-[10px] bg-moss-wash px-10 py-4 text-caption text-ink">
+      <span>
+        saved as <b className="font-mono font-semibold">{savedAs.answer}</b>
+      </span>
+      {time && (
+        <>
+          {' '}
+          <span className="text-ink-muted">· {time}</span>
+        </>
+      )}
+    </p>
+  )
+}
+
+function Picked({ id, savedAs }) {
   const mood = CALM_MOODS[id]
   if (!mood) {
     return (
@@ -18,7 +39,7 @@ function Picked({ id }) {
         <div>
           <p className="m-0 text-heading">Nothing picked yet</p>
           <p className="m-0 mt-2 text-note text-ink-muted">
-            Choose a Tuck in the sidebar, or one of your usual moods below.
+            Choose a Tuck in the sidebar, or one of the moods below.
           </p>
         </div>
       </>
@@ -33,6 +54,7 @@ function Picked({ id }) {
         <p className="m-0 text-heading">{mood.name}</p>
         <span className="font-mono text-mono whitespace-pre text-ink-muted">{mood.face}</span>
         <p className="m-0 mt-2 text-note text-ink-muted">{mood.when}</p>
+        {savedAs && <SavedAs savedAs={savedAs} />}
       </div>
     </>
   )
@@ -78,15 +100,28 @@ function Reply({ draft, saved }) {
   )
 }
 
-// Today's check-in: the picked Tuck, your usual moods, an optional note, save,
-// and Tuck's reply beside it. The note stays on this screen; it isn't saved.
-export function CalmCheckIn({ picked, draft, saved, onPick, onSave }) {
-  const canSave = Boolean(draft) && draft !== saved
+// Today's check-in: the picked Tuck, every mood as a quick button, an optional
+// note, save, and Tuck's reply beside it. The note is saved with the check-in and
+// can be read again in "Your check-ins".
+export function CalmCheckIn({
+  picked,
+  draft,
+  saved,
+  savedAs,
+  onPick,
+  onSave,
+  canSave,
+  note,
+  onNoteChange,
+}) {
+  const changing = Boolean(draft) && draft !== saved
   const hint = !picked
-    ? 'pick a Tuck from the sidebar'
-    : canSave
+    ? 'pick a Tuck in the sidebar or below'
+    : changing
       ? 'you can change it any time today'
-      : 'saved on this device'
+      : canSave
+        ? 'save to add this note'
+        : 'saved on this device'
 
   return (
     <section
@@ -104,43 +139,20 @@ export function CalmCheckIn({ picked, draft, saved, onPick, onSave }) {
             !picked && 'border-dashed',
           )}
         >
-          <Picked id={picked} />
+          <Picked id={picked} savedAs={!draft || draft === saved ? savedAs : null} />
         </div>
 
-        <div
-          role="group"
-          aria-label="your usual moods"
-          className="flex flex-wrap items-center gap-8"
-        >
-          <span className="text-caption text-ink-muted">your usual:</span>
-          {USUAL_MOODS.map((id) => {
-            const on = picked === id
-            return (
-              <button
-                key={id}
-                type="button"
-                aria-pressed={on}
-                onClick={() => onPick(id)}
-                className={cx(
-                  'inline-flex min-h-[44px] cursor-pointer items-center gap-8 rounded-[12px] border-line px-12 font-mono text-[14px] text-ink',
-                  on ? 'border-[3px] bg-caramel-wash font-semibold' : 'border-2 bg-canvas',
-                )}
-              >
-                <span aria-hidden="true" className="whitespace-pre">
-                  {CALM_MOODS[id].face}
-                </span>
-                {CALM_MOODS[id].name.toLowerCase()}
-              </button>
-            )
-          })}
-        </div>
+        <MoodButtons picked={picked} onPick={onPick} />
 
         <div>
           <label htmlFor="calm-note" className="mb-6 block text-note font-semibold">
-            Anything on your mind? <span className="font-normal text-ink-muted">(optional)</span>
+            Actions, Attitudes, Behaviors, Mannerisms, Patterns{' '}
+            <span className="font-normal text-ink-muted">(optional)</span>
           </label>
           <textarea
             id="calm-note"
+            value={note}
+            onChange={(event) => onNoteChange(event.target.value)}
             placeholder="a word or two is plenty"
             className="min-h-[60px] w-full resize-y rounded-sm border-2 border-line bg-canvas px-12 py-10 text-note text-ink"
           />

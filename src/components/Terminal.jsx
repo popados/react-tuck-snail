@@ -2,7 +2,8 @@ import { cx, faceFor, sayFace } from '@/lib/faces'
 
 const DOTS = ['bg-blush', 'bg-butter', 'bg-moss']
 
-function TerminalLine({ type, face, faceLabel, text }) {
+// One line of terminal output; shared with the interactive TuckShell.
+export function TerminalLine({ type, face, faceLabel, text }) {
   if (type === 'cmd') return <div>{`$ ${text}`}</div>
   if (type === 'gap') return <div className="h-[1.6em]" />
   if (type === 'dim') return <div className="text-term-dim">{text}</div>

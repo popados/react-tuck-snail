@@ -1,7 +1,9 @@
-import { CALM_MOODS, MOOD_GROUPS, art } from '@/features/calm/calmMoods'
+import { CALM_MOODS, art } from '@/features/calm/calmMoods'
+import { EMOTION_GROUPS } from '@/lib/emotionGroups'
 import { cx } from '@/lib/faces'
 
-// "How are you feeling?": every Tuck, in three groups, each a toggle button.
+// "How are you feeling?": the Tucks in the sidebar groups (Acknowledge, Permit,
+// Direct, Offer, Keep), each a toggle button.
 // The art is decorative here; the name is the button's label.
 export function MoodPicker({ picked, onPick }) {
   return (
@@ -13,13 +15,10 @@ export function MoodPicker({ picked, onPick }) {
         Pick the Tuck that looks most like today. It fills in the check-in.
       </p>
       <div className="mt-6 flex flex-col gap-16">
-        {MOOD_GROUPS.map((group) => (
+        {EMOTION_GROUPS.map((group) => (
           <div key={group.label} className="flex flex-col gap-6">
             <p className="m-0 flex items-center gap-8 text-caption text-ink-muted">
-              <i
-                aria-hidden="true"
-                className={cx('size-10 rounded-full border-2 border-line opacity-75', group.color)}
-              />
+              <i aria-hidden="true" className={cx('size-10 rounded-full', group.color)} />
               {group.label}
             </p>
             <div className="grid grid-cols-[repeat(auto-fill,minmax(104px,1fr))] gap-8 min-[821px]:grid-cols-2">

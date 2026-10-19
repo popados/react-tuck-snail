@@ -1,25 +1,13 @@
 ---
-stale-refs:
-  - source: docs\design-system\USING-IN-CODE.md
-    changed_at: "2026-10-18T00:54:59"
-    sections_changed: []
-    summary: externally modified
-  - source: docs\tuck-design-system.md
-    changed_at: "2026-10-18T00:54:59"
-    sections_changed: []
-    summary: externally modified
 ---
-
-
-
 
 # Tuck the Snail
 
 Slow progress is still progress.
 
-Tuck is a calm snail mascot from Shellday Studio. He lives in gentle habit and mood apps, web games and the terminal. His shell is a spiral `@`, so he works as art, as a 32px avatar and as one character on a roguelike map.
+Tuck is a calm snail mascot from pocket@shell. He lives in gentle habit and mood apps, web games and the terminal. His shell is a spiral `@`, so he works as art, as a 32px avatar and as one character on a roguelike map.
 
-This repo holds the web app that will become **Tuck Check-in**, a habit and mood tracker with no streaks, no account, and everything stored on your device. It also holds the character, design system and launch docs behind it.
+This repo holds the web app that will become **pocket@shell**, a habit and mood tracker with no streaks, no account, and everything stored on your device. It also holds the character, design system and launch docs behind it.
 
 ![Tuck the Snail model sheet: hero pose, tucked in to rest, the round avatar, and the ASCII text forms](images/designs/Model%20sheet.png)
 
@@ -84,7 +72,7 @@ npm run dev
 
 The stack is React with Vite, React Router, TanStack Query, Zustand, React Hook Form with Zod, and Tailwind CSS, all in JavaScript.
 
-The app is built on the Tuck the Snail design system: its colors (light and dark), type, spacing, six components (`src/components/`) and the ten mascot SVGs (`public/mascot/`). The home page has a working check-in that saves today's answer in your browser. The calm home (`/calm`, linked from the home page) is a quieter version in the low stimulation palette, ported from `images/Tuck Calm Home/`; both views share the same saved check-in. The rest of Tuck Check-in (insights, habits, the shelf) isn't built yet. For which Tailwind class matches which token, see [docs/design-system/USING-IN-CODE.md](docs/design-system/USING-IN-CODE.md).
+The app is built on the Tuck the Snail design system: its colors (light and dark), type, spacing, six components (`src/components/`) and the ten mascot SVGs (`public/mascot/`). The home page has a working check-in that saves today's answer in your browser. The calm home (`/calm`, linked from the home page) is a quieter version in the low stimulation palette, ported from `images/Tuck Calm Home/`; both views share the same saved check-in. In the nav, Emotional Check opens the calm home; the Games page (`/games`) holds the shelf of cosmetic unlocks. Every page has tuckshell, a working terminal under its title: type `help` to see its commands (`checkin`, `today`, `log`, `open`, `theme`, `clear`). The Habits page (`/habits`, desktop view of `images/mockups/habit-tracking-mockup.png`) adds habits with a name, a time of day and the days they repeat, logs them day by day on a month calendar, and lists them in an expandable table where a timer can be added. The Insights page (`/insights`) looks back on your check-ins, this week and the month so far, from `images/html_mockups/pocket-shell-check-in.html`. The rest of pocket@shell (grounding, profile) isn't built yet. For which Tailwind class matches which token, see [docs/design-system/USING-IN-CODE.md](docs/design-system/USING-IN-CODE.md).
 
 ## Docs
 
@@ -107,4 +95,4 @@ The app is built on the Tuck the Snail design system: its colors (light and dark
 
 `@_^^` thanks for reading. no rush.
 
-Made by Sam and Tuck · Shellday Studio
+Made by Sam and Tuck · pocket@shell

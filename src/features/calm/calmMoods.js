@@ -1,11 +1,14 @@
-// The calm home's fourteen Tucks, from images/Tuck Calm Home/index.html.
+// Tuck's moods: the calm home's fourteen, from images/Tuck Calm Home/index.html,
+// plus twelve more from public/mascot (at the end).
 // bucket is which of the five check-in answers (and fixed mood colors) each one
 // saves and charts as. scene, when present, is the larger art shown in the reply.
+// card, when present, is the mood card art (public/mascot/tuck-card-*.svg); pass it to art().
 export const CALM_MOODS = {
   happy: {
     name: 'Good',
     face: '@_^^',
     img: 'tuck-happy',
+    card: 'tuck-card-good',
     alt: 'Tuck happy, stalks up, smiling',
     bucket: 'good',
     when: 'a good day, big or small',
@@ -15,6 +18,7 @@ export const CALM_MOODS = {
     name: 'Proud',
     face: '@_^^ *',
     img: 'tuck-proud',
+    card: 'tuck-card-proud',
     alt: 'Tuck proud, stalks tall, eyes smiling, a small spark',
     bucket: 'good',
     when: 'you did a thing, even after a hard week',
@@ -25,6 +29,7 @@ export const CALM_MOODS = {
     name: 'Grateful',
     face: '@_^^ <3',
     img: 'tuck-grateful',
+    card: 'tuck-card-grateful',
     alt: 'Tuck grateful, smiling eyes, a small heart',
     bucket: 'good',
     when: 'something or someone helped',
@@ -43,6 +48,7 @@ export const CALM_MOODS = {
     name: 'Okay',
     face: '@_oo',
     img: 'tuck-hero',
+    card: 'tuck-card-okay',
     alt: 'Tuck the snail, smiling with eye stalks up',
     bucket: 'okay',
     when: 'nothing big either way',
@@ -52,6 +58,7 @@ export const CALM_MOODS = {
     name: 'Calm',
     face: '@_uu',
     img: 'tuck-calm',
+    card: 'tuck-card-calm',
     alt: 'Tuck calm, stalks relaxed, eyes softly closed',
     bucket: 'okay',
     when: 'settled, after a breath',
@@ -72,6 +79,7 @@ export const CALM_MOODS = {
     name: 'Tired',
     face: '@_--',
     img: 'tuck-sleepy',
+    card: 'tuck-card-tired',
     alt: 'Tuck sleepy, stalks loose, eyes closed',
     bucket: 'tired',
     when: 'low battery, sleepy',
@@ -82,6 +90,7 @@ export const CALM_MOODS = {
     name: 'Anxious',
     face: '@_oo;',
     img: 'tuck-anxious',
+    card: 'tuck-card-anxious',
     alt: 'Tuck anxious, stalks wobbling, wide eyes, a sweat drop',
     bucket: 'low',
     when: 'worried, on edge',
@@ -109,6 +118,7 @@ export const CALM_MOODS = {
     name: 'Lonely',
     face: '@_..',
     img: 'tuck-lonely',
+    card: 'tuck-card-lonely',
     alt: 'Tuck lonely, stalks drooping to one side, small eyes',
     bucket: 'low',
     when: 'missing people',
@@ -118,6 +128,7 @@ export const CALM_MOODS = {
     name: 'Low',
     face: '@_;;',
     img: 'tuck-sad',
+    card: 'tuck-card-low',
     alt: 'Tuck sad, stalks drooping, one tear',
     bucket: 'low',
     when: 'heavy, down',
@@ -127,25 +138,138 @@ export const CALM_MOODS = {
     name: 'Shell day',
     face: '(@)',
     img: 'tuck-tucked',
+    card: 'tuck-card-shell-day',
     alt: 'Tuck tucked into its shell, resting',
     bucket: 'shell',
     when: 'you need to hide away for a bit',
     line: 'shell day logged. that counts too.',
     scene: 'tuck-scene-shell-day',
   },
+
+  // More emotions from public/mascot, offered as quick buttons in Today's
+  // check-in (see "more" in lib/emotionGroups.js). Lines come from each mood card;
+  // Surprised and Shy have no card, so theirs are written to match.
+  relieved: {
+    name: 'Relieved',
+    face: '@_uu ~',
+    img: 'tuck-relieved',
+    card: 'tuck-card-relieved',
+    alt: 'Tuck relieved, eyes closed, letting out a breath',
+    bucket: 'good',
+    when: 'a weight just lifted',
+    line: "phew. that's done.",
+  },
+  surprised: {
+    name: 'Surprised',
+    face: '@_OO',
+    img: 'tuck-surprised',
+    alt: 'Tuck surprised, stalks tall, eyes wide',
+    bucket: 'okay',
+    when: 'something you didn’t see coming',
+    line: 'oh. something new. we can look at it slowly.',
+  },
+  bored: {
+    name: 'Bored',
+    face: '@_-_',
+    img: 'tuck-bored',
+    card: 'tuck-card-bored',
+    alt: 'Tuck bored, stalks flopped to one side, eyes half shut',
+    bucket: 'okay',
+    when: 'nothing is pulling at you',
+    line: "a slow day. that's allowed.",
+  },
+  disappointed: {
+    name: 'Disappointed',
+    face: "@_''",
+    img: 'tuck-disappointed',
+    card: 'tuck-card-disappointed',
+    alt: 'Tuck disappointed, stalks bent low, eyes looking down, small frown',
+    bucket: 'low',
+    when: 'it didn’t go how you hoped',
+    line: "not how you hoped. i'm sorry.",
+  },
+  determined: {
+    name: 'Determined',
+    face: '@_>>',
+    img: 'tuck-determined',
+    card: 'tuck-card-determined',
+    alt: 'Tuck determined, stalks pointed forward, brows set, mouth firm',
+    bucket: 'okay',
+    when: 'set on something',
+    line: "slow, but i'm going.",
+  },
+  frustrated: {
+    name: 'Frustrated',
+    face: '@_##',
+    img: 'tuck-frustrated',
+    card: 'tuck-card-frustrated',
+    alt: 'Tuck frustrated, stiff stalks, brows down, teeth gritted, a puff of steam',
+    bucket: 'low',
+    when: 'stuck, or fed up',
+    line: 'ugh. you can say so.',
+  },
+  overwhelmed: {
+    name: 'Overwhelmed',
+    face: '@_@@',
+    img: 'tuck-overwhelmed',
+    card: 'tuck-card-overwhelmed',
+    alt: 'Tuck overwhelmed, wobbling stalks, spiral eyes',
+    bucket: 'low',
+    when: 'too much, all at once',
+    line: "too much at once. let's pick one.",
+  },
+  shy: {
+    name: 'Shy',
+    face: '@_',
+    img: 'tuck-shy',
+    alt: 'Tuck shy, stalks pulled in, blushing',
+    bucket: 'okay',
+    when: 'a bit quiet today',
+    line: "that's okay. you don't have to say more.",
+  },
+  content: {
+    name: 'Content',
+    face: '@_^-',
+    img: 'tuck-content',
+    card: 'tuck-card-content',
+    alt: 'Tuck content, one eye smiling, one eye resting',
+    bucket: 'good',
+    when: 'settled, and that’s enough',
+    line: 'this is enough right now.',
+  },
+  excited: {
+    name: 'Excited',
+    face: '@_**',
+    img: 'tuck-excited',
+    card: 'tuck-card-excited',
+    alt: 'Tuck excited, stalks tall, star eyes, open smile',
+    bucket: 'good',
+    when: 'something good is ahead',
+    line: 'something good is coming.',
+  },
+  hopeful: {
+    name: 'Hopeful',
+    face: '@_^o',
+    img: 'tuck-hopeful',
+    card: 'tuck-card-hopeful',
+    alt: 'Tuck hopeful, stalks reaching up and forward, a soft smile',
+    bucket: 'good',
+    when: 'looking toward something softer',
+    line: 'tomorrow might be softer.',
+  },
+  playful: {
+    name: 'Playful',
+    face: '@_^v',
+    img: 'tuck-playful',
+    card: 'tuck-card-playful',
+    alt: 'Tuck playful, one stalk bent, grinning with tongue out',
+    bucket: 'good',
+    when: 'a little silly',
+    line: 'a little silly is allowed.',
+  },
 }
 
-export const MOOD_GROUPS = [
-  { label: 'Bright', color: 'bg-mood-good', ids: ['happy', 'proud', 'grateful', 'curious'] },
-  { label: 'Steady', color: 'bg-mood-okay', ids: ['okay', 'calm', 'focused', 'tired'] },
-  {
-    label: 'Heavy',
-    color: 'bg-mood-low',
-    ids: ['anxious', 'stressed', 'confused', 'lonely', 'sad', 'shell'],
-  },
-]
-
-export const USUAL_MOODS = ['okay', 'tired', 'calm', 'sad']
+// The categories these moods are grouped by live in lib/emotionGroups.js.
 
 // The Tuck to show for a day saved from the landing page, which only knows the answer.
 const BUCKET_TUCK = { good: 'happy', okay: 'okay', tired: 'tired', low: 'sad', shell: 'shell' }
@@ -163,41 +287,6 @@ export const BUCKET_BAR = {
   tired: { height: 'h-[56%]', fill: 'bg-mood-tired' },
   low: { height: 'h-[40%]', fill: 'bg-mood-low' },
 }
-
-export const HABITS = [
-  {
-    id: 'water',
-    hint: 'a glass or a sip',
-    face: '@_o?',
-    line: 'water logged. small sips count.',
-    scene: 'tuck-scene-water-break',
-    alt: 'Tuck looking up at a glass of water',
-  },
-  {
-    id: 'walk',
-    hint: 'any pace, any length',
-    face: '...@_^^',
-    line: 'walk logged. snail pace is a pace.',
-    scene: 'tuck-scene-trail',
-    alt: 'Tuck in a pink scarf leaning forward',
-  },
-  {
-    id: 'sleep',
-    hint: 'screens off by 11',
-    face: '@_--',
-    line: 'noted. the code will still be here tomorrow.',
-    scene: 'tuck-scene-bedtime',
-    alt: 'Sleepy Tuck under a moon beside a closed laptop',
-  },
-  {
-    id: 'break',
-    hint: 'stretch, look away',
-    face: '@_uu',
-    line: 'break logged. good call.',
-    scene: 'tuck-scene-still-water',
-    alt: 'Tuck sitting calmly by still water',
-  },
-]
 
 export function art(name) {
   return `/mascot/${name}.svg`

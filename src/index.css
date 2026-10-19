@@ -52,6 +52,16 @@
   --mood-low: #56738c;
   --mood-shell: #d69a6a;
 
+  /* Response types: the color dots on the Emotional Check sidebar groups.
+     Decorative only (the group name carries the meaning). Light here, dark below;
+     the dark Permit and Direct values were lightened to match the others (about 4.5:1
+     on the dark sidebar). */
+  --rt-acknowledge: #6e675c;
+  --rt-permit: #56624a;
+  --rt-direct: #4a5a66;
+  --rt-offer: #8a5d70;
+  --rt-keep: #8a6520;
+
   /* Notices (never red) */
   --moss-wash: #e8f0e4;
   --butter-wash: #f8efcf;
@@ -100,6 +110,11 @@
     --ground-shadow: #121915;
     --art-ground: #d9dfd4;
     --term-edge: #3a4a41;
+    --rt-acknowledge: #8c8478;
+    --rt-permit: #7d8e6b;
+    --rt-direct: #738c9e;
+    --rt-offer: #ac7e92;
+    --rt-keep: #c99a4a;
   }
 }
 
@@ -117,6 +132,11 @@
   --ground-shadow: #121915;
   --art-ground: #d9dfd4;
   --term-edge: #3a4a41;
+  --rt-acknowledge: #8c8478;
+  --rt-permit: #7d8e6b;
+  --rt-direct: #738c9e;
+  --rt-offer: #ac7e92;
+  --rt-keep: #c99a4a;
 }
 
 /*
@@ -221,6 +241,11 @@
   --color-mood-tired: var(--mood-tired);
   --color-mood-low: var(--mood-low);
   --color-mood-shell: var(--mood-shell);
+  --color-rt-acknowledge: var(--rt-acknowledge);
+  --color-rt-permit: var(--rt-permit);
+  --color-rt-direct: var(--rt-direct);
+  --color-rt-offer: var(--rt-offer);
+  --color-rt-keep: var(--rt-keep);
   --color-moss-wash: var(--moss-wash);
   --color-butter-wash: var(--butter-wash);
   --color-tear-wash: var(--tear-wash);
