@@ -62,15 +62,21 @@ describe('InsightsPage', () => {
     expect(week).toHaveTextContent('bed late.')
   })
 
-  it('shows the month so far', () => {
+  it('shows the whole month', () => {
     const today = new Date()
     const [mon] = weekDays({}).map((d) => d.key)
     const entries = { [mon]: 'good' }
     useCheckinStore.setState({ entries })
     renderRoute('/insights')
     const monthName = today.toLocaleString('en-US', { month: 'long' })
-    const month = screen.getByRole('region', { name: `${monthName} so far` })
+    const month = screen.getByRole('region', { name: monthName })
     const inMonth = mon.slice(0, 7) === todayKey(today).slice(0, 7) ? 1 : 0
-    expect(month).toHaveTextContent(`${inMonth} ${inMonth === 1 ? 'day' : 'days'} you checked in`)
+    expect(month).toHaveTextContent(
+      `${inMonth} ${inMonth === 1 ? 'day' : 'days'} you checked in so far`,
+    )
+    const daysInMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate()
+    expect(within(month).getByRole('img')).toHaveAccessibleName(
+      `${monthName}, ${daysInMonth} days, ${inMonth} checked in so far`,
+    )
   })
 })

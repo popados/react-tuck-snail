@@ -25,10 +25,16 @@ describe('insightsData', () => {
     expect(days.map((d) => d.answer)).toEqual(['good', null, null, null, 'shell', null, null])
   })
 
-  it('covers the 1st of the month to today', () => {
-    const days = monthDays({}, SUNDAY_OCT_18)
-    expect(days).toHaveLength(18)
+  it('covers the whole month, marking today and the days to come', () => {
+    const days = monthDays({ '2026-10-18': 'good', '2026-10-20': 'okay' }, SUNDAY_OCT_18)
+    expect(days).toHaveLength(31)
     expect(days[0].key).toBe('2026-10-01')
+    expect(days[30].key).toBe('2026-10-31')
+    expect(days[17]).toMatchObject({ today: true, future: false, answer: 'good' })
+    expect(days[18]).toMatchObject({ today: false, future: true })
+    // Nothing can be checked in ahead of time.
+    expect(days[19].answer).toBeNull()
+    expect(monthDays({}, new Date(2026, 1, 10))).toHaveLength(28)
   })
 
   it('counts the mix of answers, leaving blanks out', () => {

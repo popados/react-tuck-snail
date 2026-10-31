@@ -1,10 +1,11 @@
-import { Link } from 'react-router'
+'use client'
+
+import Link from 'next/link'
 import { SocialTile } from '@/components/SocialTile'
 import { Terminal } from '@/components/Terminal'
 import { CheckIn } from '@/features/checkin/CheckIn'
 import { ExpressionGroups } from '@/features/expressions/ExpressionGroups'
 import { TuckShell } from '@/features/tuckshell/TuckShell'
-import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 
 const TERMINAL_LINES = [
   { type: 'cmd', text: 'tuckshell log water' },
@@ -19,8 +20,6 @@ const TERMINAL_LINES = [
 ]
 
 export function HomePage() {
-  useDocumentTitle()
-
   return (
     <div>
       <main className="mx-auto flex max-w-page flex-col gap-64 px-16 pt-32 pb-64 md:px-32">
@@ -48,8 +47,8 @@ export function HomePage() {
               breaks. Slow progress is still progress.
             </p>
             <p className="m-0 text-body text-ink-muted">
-              Want something quieter? <Link to="/calm">Open the calm home</Link>, a softer check-in
-              for sensory-sensitive days.
+              Want something quieter? <Link href="/calm">Open the calm home</Link>, a softer
+              check-in for sensory-sensitive days.
             </p>
             <TuckShell />
           </div>

@@ -1,11 +1,10 @@
+'use client'
+
 import { ShelfCard } from '@/features/shelf/ShelfCard'
 import { TuckShell } from '@/features/tuckshell/TuckShell'
-import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 
 // Games: for now, the shelf of cosmetic unlocks for the web games and tuckshell.
 export function GamesPage() {
-  useDocumentTitle('Games')
-
   return (
     <div>
       <main className="mx-auto flex max-w-page flex-col gap-24 px-16 pt-24 pb-48 min-[821px]:px-32">

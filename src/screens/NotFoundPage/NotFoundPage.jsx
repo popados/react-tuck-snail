@@ -1,11 +1,10 @@
-import { Link } from 'react-router'
+'use client'
+
+import Link from 'next/link'
 import { TuckFace } from '@/components/TuckFace'
 import { TuckShell } from '@/features/tuckshell/TuckShell'
-import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 
 export function NotFoundPage() {
-  useDocumentTitle('Page not found')
-
   return (
     <main className="mx-auto flex max-w-phone flex-col gap-16 px-16 py-64">
       <TuckFace mood="surprised" size="xl" />
@@ -14,7 +13,7 @@ export function NotFoundPage() {
         This page doesn't exist, or it has moved. Tuck looked around slowly and didn't find it.
       </p>
       <TuckShell />
-      <Link to="/" className="inline-flex min-h-[44px] items-center text-body">
+      <Link href="/" className="inline-flex min-h-[44px] items-center text-body">
         Go back to the home page
       </Link>
     </main>

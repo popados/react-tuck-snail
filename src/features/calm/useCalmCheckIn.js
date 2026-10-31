@@ -16,21 +16,27 @@ export function useCalmCheckIn() {
   const saved = tuckForDay(entries[today], details[today])
   // What today's check-in was saved as, and when (its latest log entry).
   const lastToday = useCheckinStore((state) => state.log.findLast((item) => item.day === today))
-  const savedAs = entries[today] ? { answer: entries[today], at: lastToday?.at ?? null } : null
+  const savedAs = entries[today]
+    ? { answer: entries[today], at: lastToday?.at ?? null, energy: lastToday?.energy ?? null }
+    : null
   const [draft, setDraft] = useState(null)
   const [note, setNote] = useState('')
+  const [energy, setEnergy] = useState(null)
   const print = useShellStore((state) => state.push)
 
   const picked = draft ?? saved
-  // A new Tuck can be saved; so can a note on today's Tuck, as another log entry.
-  const canSave = Boolean(picked) && ((draft && draft !== saved) || note.trim() !== '')
+  // A new Tuck can be saved; so can a note or an energy level on today's Tuck,
+  // as another log entry.
+  const canSave =
+    Boolean(picked) && ((draft && draft !== saved) || note.trim() !== '' || energy !== null)
 
   function save() {
     if (!canSave) return
     const mood = CALM_MOODS[picked]
-    checkIn(mood.bucket, picked, note)
+    checkIn(mood.bucket, picked, note, { energy })
     setDraft(null)
     setNote('')
+    setEnergy(null)
     print(
       { type: 'cmd', text: `checkin ${picked}` },
       { face: mood.face, text: mood.line.split(' 988')[0] },
@@ -47,6 +53,9 @@ export function useCalmCheckIn() {
     canSave,
     note,
     setNote,
+    energy,
+    // Picking the level that's already set clears it.
+    setEnergy: (level) => setEnergy((current) => (current === level ? null : level)),
     entries,
     details,
     shownUp: daysShownUpThisMonth(entries),

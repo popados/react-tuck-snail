@@ -1,5 +1,7 @@
+'use client'
+
 import { useEffect, useId, useRef, useState } from 'react'
-import { useNavigate } from 'react-router'
+import { useRouter } from 'next/navigation'
 import { TerminalLine } from '@/components/Terminal'
 import { runCommand } from '@/features/tuckshell/commands'
 import { useCheckinStore } from '@/stores/useCheckinStore'
@@ -13,7 +15,7 @@ export function TuckShell() {
   const inputId = useId()
   const outputRef = useRef(null)
   const inputRef = useRef(null)
-  const navigate = useNavigate()
+  const router = useRouter()
   const [value, setValue] = useState('')
   const [recall, setRecall] = useState(null) // index into history while browsing
 
@@ -39,7 +41,7 @@ export function TuckShell() {
     const result = runCommand(command, { entries, checkIn, setTheme })
     if (result.clear) clear()
     else push({ type: 'cmd', text: command }, ...result.lines)
-    if (result.navigate) navigate(result.navigate)
+    if (result.navigate) router.push(result.navigate)
   }
 
   function onSubmit(event) {

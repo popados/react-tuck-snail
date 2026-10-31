@@ -1,5 +1,6 @@
 import { create } from 'zustand'
-import { createJSONStorage, persist } from 'zustand/middleware'
+import { persist } from 'zustand/middleware'
+import { deviceStorage } from '@/stores/deviceStorage'
 
 // Check-ins, kept in this browser's localStorage and nowhere else.
 //
@@ -11,6 +12,7 @@ import { createJSONStorage, persist } from 'zustand/middleware'
 //     day: '2026-10-18',
 //     answer: 'good' | 'okay' | 'tired' | 'low' | 'shell',
 //     answerIntensity: 1-5 | null,       // not asked yet, so null
+//     energy: 1-5 | null,                 // the energy meter, if set
 //     words: [{ word: 'overwhelmed', intensity: 1-5 | null }],
 //     tags: [],                           // not asked yet
 //     note: 'deadline moved up. bed late.',
@@ -53,6 +55,7 @@ export function makeRecord({
   note = '',
   day = todayKey(),
   at = new Date(),
+  energy = null,
 }) {
   return {
     id: crypto.randomUUID(),
@@ -60,6 +63,7 @@ export function makeRecord({
     day,
     answer,
     answerIntensity: null,
+    energy,
     words: wordsFor(answer, detail),
     tags: [],
     note: note.trim(),
@@ -67,10 +71,17 @@ export function makeRecord({
   }
 }
 
-// Version 1 records follow the mockup. Version 0 records were
-// { id, at, day, answer, detail, note }; migrate converts them.
+// Version 2 records follow the mockup, plus energy. Version 1 had no energy;
+// version 0 records were { id, at, day, answer, detail, note }. migrate
+// brings either up to date.
 export function migrateCheckins(persisted, version) {
-  if (version >= 1 || !persisted) return persisted
+  if (version >= 2 || !persisted) return persisted
+  if (version === 1) {
+    return {
+      ...persisted,
+      log: (persisted.log ?? []).map((item) => ({ ...item, energy: item.energy ?? null })),
+    }
+  }
   return {
     ...persisted,
     log: (persisted.log ?? []).map(({ detail, ...old }) => ({
@@ -79,6 +90,7 @@ export function migrateCheckins(persisted, version) {
       day: old.day,
       answer: old.answer,
       answerIntensity: null,
+      energy: null,
       words: wordsFor(old.answer, detail),
       tags: [],
       note: old.note ?? '',
@@ -93,11 +105,11 @@ export const useCheckinStore = create(
       entries: {},
       details: {},
       log: [],
-      checkIn: (answer, detail = null, note = '', day = todayKey()) =>
+      checkIn: (answer, detail = null, note = '', { day = todayKey(), energy = null } = {}) =>
         set((state) => ({
           entries: { ...state.entries, [day]: answer },
           details: { ...state.details, [day]: detail },
-          log: [...state.log, makeRecord({ answer, detail, note, day })],
+          log: [...state.log, makeRecord({ answer, detail, note, day, energy })],
         })),
       // Takes back a day's check-in, and its most recent record.
       clear: (day = todayKey()) =>
@@ -111,9 +123,9 @@ export const useCheckinStore = create(
     }),
     {
       name: 'tuck-checkin',
-      version: 1,
+      version: 2,
       migrate: migrateCheckins,
-      storage: createJSONStorage(() => localStorage),
+      storage: deviceStorage,
     },
   ),
 )

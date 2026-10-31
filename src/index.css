@@ -260,8 +260,9 @@
 
 @theme {
   /* Type families: font-sans (everything spoken), font-mono (anything Tuck types) */
-  --font-sans: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-sans: var(--font-bricolage), 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
+  --font-mono:
+    var(--font-jetbrains), 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
   /* Type styles: text-display ... text-mono-sm (size, line height, weight) */
   --text-display: 56px;

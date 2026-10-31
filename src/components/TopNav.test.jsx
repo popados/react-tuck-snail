@@ -1,15 +1,15 @@
 import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { MemoryRouter } from 'react-router'
 import { TopNav } from '@/components/TopNav'
+import { TestRouter } from '@/test/testRouter'
 
 const LABELS = ['Home', 'Emotional Check', 'Habits', 'Games', 'Grounding', 'Insights', 'Profile']
 
 function renderAt(path) {
   return render(
-    <MemoryRouter initialEntries={[path]}>
+    <TestRouter initialPath={path}>
       <TopNav />
-    </MemoryRouter>,
+    </TestRouter>,
   )
 }
 

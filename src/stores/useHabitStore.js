@@ -1,5 +1,6 @@
 import { create } from 'zustand'
-import { createJSONStorage, persist } from 'zustand/middleware'
+import { persist } from 'zustand/middleware'
+import { deviceStorage } from '@/stores/deviceStorage'
 import { NEXT_STATUS } from '@/lib/habitTime'
 import { todayKey } from '@/stores/useCheckinStore'
 
@@ -44,6 +45,6 @@ export const useHabitStore = create(
           return { logs: { ...state.logs, [id]: log } }
         }),
     }),
-    { name: 'tuck-habits', storage: createJSONStorage(() => localStorage) },
+    { name: 'tuck-habits', storage: deviceStorage },
   ),
 )

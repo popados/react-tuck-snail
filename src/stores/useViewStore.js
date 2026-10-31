@@ -1,5 +1,6 @@
 import { create } from 'zustand'
-import { createJSONStorage, persist } from 'zustand/middleware'
+import { persist } from 'zustand/middleware'
+import { deviceStorage } from '@/stores/deviceStorage'
 
 // How parts of a page were left, saved on this device so they stay that way.
 // logExpanded: "Your check-ins" shows every check-in (true) or only the 3 most
@@ -10,6 +11,6 @@ export const useViewStore = create(
       logExpanded: true,
       setLogExpanded: (logExpanded) => set({ logExpanded }),
     }),
-    { name: 'tuck-view', storage: createJSONStorage(() => localStorage) },
+    { name: 'tuck-view', storage: deviceStorage },
   ),
 )

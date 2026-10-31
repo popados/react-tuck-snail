@@ -1,11 +1,11 @@
 import { fileURLToPath, URL } from 'node:url'
-import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vitest/config'
 
-// https://vite.dev/config/
+// Tests run in Vitest + jsdom, outside Next. next/navigation and next/link are
+// swapped for a small in-memory router in src/test/setup.js.
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [react()],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),

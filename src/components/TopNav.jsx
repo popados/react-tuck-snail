@@ -1,5 +1,8 @@
+'use client'
+
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useId, useState } from 'react'
-import { Link, NavLink } from 'react-router'
 import { NAV_ITEMS } from '@/app/navItems'
 import { cx } from '@/lib/faces'
 
@@ -13,6 +16,10 @@ const CURRENT = 'border-2 border-line bg-caramel-wash px-10 font-semibold'
 export function TopNav() {
   const listId = useId()
   const [open, setOpen] = useState(false)
+  const pathname = usePathname()
+  // end: only the exact path counts (so "/" isn't current everywhere).
+  const isCurrent = (item) =>
+    item.end ? pathname === item.to : pathname === item.to || pathname.startsWith(`${item.to}/`)
 
   return (
     <header className="border-b-2 border-line bg-canvas">
@@ -27,7 +34,7 @@ export function TopNav() {
             cropped with its background made clear (the dark-band crop swaps in for
             dark mode), then >tuck@shell in mono. */}
         <Link
-          to="/"
+          href="/"
           className="flex min-h-[44px] items-center gap-8 text-ink no-underline min-[821px]:gap-12"
         >
           <img
@@ -70,14 +77,14 @@ export function TopNav() {
         >
           {NAV_ITEMS.map((item) => (
             <li key={item.to}>
-              <NavLink
-                to={item.to}
-                end={item.end}
+              <Link
+                href={item.to}
+                aria-current={isCurrent(item) ? 'page' : undefined}
                 onClick={() => setOpen(false)}
-                className={({ isActive }) => cx(ITEM, isActive && CURRENT)}
+                className={cx(ITEM, isCurrent(item) && CURRENT)}
               >
                 {item.label}
-              </NavLink>
+              </Link>
             </li>
           ))}
         </ul>

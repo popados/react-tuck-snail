@@ -1,5 +1,5 @@
-// Single place for HTTP requests. Set VITE_API_URL in .env to point at your API.
-const BASE_URL = import.meta.env.VITE_API_URL ?? 'https://jsonplaceholder.typicode.com'
+// Single place for HTTP requests. Set NEXT_PUBLIC_API_URL in .env to point at your API.
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? 'https://jsonplaceholder.typicode.com'
 
 async function request(path, options = {}) {
   const response = await fetch(`${BASE_URL}${path}`, {

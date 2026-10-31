@@ -164,6 +164,47 @@ describe('CalmHomePage', () => {
     ).not.toHaveTextContent('saved as')
   })
 
+  it('has an energy meter under the image, 5 at the top, saved with the check-in', async () => {
+    renderCalm()
+    const meter = screen.getByRole('group', { name: /Energy/ })
+    expect(
+      within(meter)
+        .getAllByRole('button')
+        .map((b) => b.getAttribute('aria-label')),
+    ).toEqual([
+      'Energy 5 of 5, full tank',
+      'Energy 4 of 5, plenty',
+      'Energy 3 of 5, some',
+      'Energy 2 of 5, a little',
+      'Energy 1 of 5, running low',
+    ])
+    const feelings = screen.getByRole('group', { name: 'How are you feeling?' })
+    await userEvent.click(within(feelings).getByRole('button', { name: 'Calm' }))
+    const three = within(meter).getByRole('button', { name: /Energy 3/ })
+    await userEvent.click(three)
+    expect(three).toHaveAttribute('aria-pressed', 'true')
+    // Picking it again clears it.
+    await userEvent.click(three)
+    expect(three).toHaveAttribute('aria-pressed', 'false')
+    await userEvent.click(within(meter).getByRole('button', { name: /Energy 2/ }))
+    await userEvent.click(screen.getByRole('button', { name: 'save check-in' }))
+
+    expect(useCheckinStore.getState().log.at(-1)).toMatchObject({ answer: 'okay', energy: 2 })
+    expect(
+      screen.getByText('settled, after a breath').closest('[role="status"]'),
+    ).toHaveTextContent(/saved as okay · energy 2 \(a little\)/)
+    // The meter resets for the next check-in; an energy alone can be saved too.
+    expect(within(meter).getByRole('button', { name: /Energy 2/ })).toHaveAttribute(
+      'aria-pressed',
+      'false',
+    )
+    expect(screen.getByRole('button', { name: 'save check-in' })).toBeDisabled()
+    await userEvent.click(within(meter).getByRole('button', { name: /Energy 5/ }))
+    expect(screen.getByText('save to add your energy')).toBeInTheDocument()
+    await userEvent.click(screen.getByRole('button', { name: 'save check-in' }))
+    expect(useCheckinStore.getState().log.at(-1)).toMatchObject({ energy: 5, note: '' })
+  })
+
   it('no longer has Small things (it moved to Habits)', () => {
     renderCalm()
     expect(screen.queryByRole('heading', { name: 'Small things' })).not.toBeInTheDocument()

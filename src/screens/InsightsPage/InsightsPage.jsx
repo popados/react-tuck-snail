@@ -1,15 +1,15 @@
+'use client'
+
 import { CALM_MOODS } from '@/features/calm/calmMoods'
 import { MonthLookBack } from '@/features/insights/MonthLookBack'
 import { WeekLookBack } from '@/features/insights/WeekLookBack'
 import { TuckShell } from '@/features/tuckshell/TuckShell'
-import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 import { useCheckinStore } from '@/stores/useCheckinStore'
 
 // Insights, from the "let's look back" views in
 // images/html_mockups/pocket-shell-check-in.html: this week and the month so far,
 // worked out on this device from your check-ins.
 export function InsightsPage() {
-  useDocumentTitle('Insights')
   const entries = useCheckinStore((state) => state.entries)
   const log = useCheckinStore((state) => state.log)
 

@@ -4,3 +4,5 @@ node_modules
 package-lock.json
 # The design system doc is exported verbatim from the design system artifact
 docs/tuck-design-system.md
+.next
+out

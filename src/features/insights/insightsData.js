@@ -30,11 +30,22 @@ export function weekDays(entries, now = new Date()) {
 }
 
 // Day 1 of this month up to today, each with its saved answer.
+// Every day of the month. Days after today are marked future (and have no answer).
 export function monthDays(entries, now = new Date()) {
-  return Array.from({ length: now.getDate() }, (_, i) => {
+  const length = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate()
+  const today = todayKey(now)
+  return Array.from({ length }, (_, i) => {
     const date = new Date(now.getFullYear(), now.getMonth(), i + 1)
     const key = todayKey(date)
-    return { key, day: i + 1, date, answer: entries[key] ?? null }
+    const future = key > today
+    return {
+      key,
+      day: i + 1,
+      date,
+      future,
+      today: key === today,
+      answer: future ? null : (entries[key] ?? null),
+    }
   })
 }
 

@@ -31,6 +31,7 @@ describe('check-in records', () => {
       day: '2026-10-18',
       answer: 'low',
       answerIntensity: null,
+      energy: null,
       words: [{ word: 'overwhelmed', intensity: null }],
       tags: [],
       note: 'deadline moved up. bed late.',
@@ -91,6 +92,7 @@ describe('check-in records', () => {
         day: '2026-10-14',
         answer: 'low',
         answerIntensity: null,
+        energy: null,
         words: [{ word: 'overwhelmed', intensity: null }],
         tags: [],
         note: 'too many tabs',
@@ -100,6 +102,18 @@ describe('check-in records', () => {
     ])
     expect(migrated.log[0]).not.toHaveProperty('detail')
     // Already-current data is left alone.
-    expect(migrateCheckins(migrated, 1)).toBe(migrated)
+    expect(migrateCheckins(migrated, 2)).toBe(migrated)
+  })
+
+  it('adds an empty energy to version 1 records', () => {
+    const v1 = { entries: {}, details: {}, log: [{ id: 'a', answer: 'okay', words: [] }] }
+    expect(migrateCheckins(v1, 1).log).toEqual([
+      { id: 'a', answer: 'okay', words: [], energy: null },
+    ])
+  })
+
+  it('stores the energy level with the check-in', () => {
+    useCheckinStore.getState().checkIn('okay', 'calm', '', { energy: 4 })
+    expect(useCheckinStore.getState().log[0]).toMatchObject({ answer: 'okay', energy: 4 })
   })
 })

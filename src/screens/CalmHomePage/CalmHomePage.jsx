@@ -1,10 +1,11 @@
+'use client'
+
 import { CalmCheckIn } from '@/features/calm/CalmCheckIn'
 import { CalmSidebar } from '@/features/calm/CalmSidebar'
 import { CheckInLog } from '@/features/calm/CheckInLog'
 import { DaysCard } from '@/features/calm/DaysCard'
 import { useCalmCheckIn } from '@/features/calm/useCalmCheckIn'
 import { TuckShell } from '@/features/tuckshell/TuckShell'
-import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 import { useCheckinStore } from '@/stores/useCheckinStore'
 
 function greeting(hour) {
@@ -18,7 +19,6 @@ function greeting(hour) {
 // images/Tuck Calm Home/index.html. Sidebar of Tucks beside a check-in and quiet cards.
 // The tuckshell sits under the greeting; saves and habit logs print into it.
 export function CalmHomePage() {
-  useDocumentTitle('Calm home')
   const calm = useCalmCheckIn()
   const log = useCheckinStore((state) => state.log)
   const now = new Date()
@@ -66,6 +66,8 @@ export function CalmHomePage() {
             canSave={calm.canSave}
             note={calm.note}
             onNoteChange={calm.setNote}
+            energy={calm.energy}
+            onEnergyChange={calm.setEnergy}
           />
 
           <DaysCard

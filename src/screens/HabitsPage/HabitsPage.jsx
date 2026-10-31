@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 import { HabitCalendar } from '@/features/habits/HabitCalendar'
 import { HabitForm } from '@/features/habits/HabitForm'
@@ -5,14 +7,12 @@ import { HabitTable } from '@/features/habits/HabitTable'
 import { LittleThings } from '@/features/habits/LittleThings'
 import { SmallThings } from '@/features/habits/SmallThings'
 import { TuckShell } from '@/features/tuckshell/TuckShell'
-import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 import { useHabitStore } from '@/stores/useHabitStore'
 
 // Habits, the desktop view of images/mockups/habit-tracking-mockup.png: little-thing
 // cards and an add form beside the selected habit's month calendar, then every
 // habit in an expandable table. Saved on this device only.
 export function HabitsPage() {
-  useDocumentTitle('Habits')
   const habits = useHabitStore((state) => state.habits)
   const logs = useHabitStore((state) => state.logs)
   const addHabit = useHabitStore((state) => state.addHabit)

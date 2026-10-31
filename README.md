@@ -61,16 +61,16 @@ npm install
 npm run dev
 ```
 
-| Command                | What it does                     |
-| ---------------------- | -------------------------------- |
-| `npm run dev`          | Start the dev server             |
-| `npm run build`        | Build for production into `dist` |
-| `npm run preview`      | Serve the production build       |
-| `npm test`             | Run the tests once (Vitest)      |
-| `npm run lint`         | Lint with ESLint                 |
-| `npm run format:check` | Check formatting with Prettier   |
+| Command                | What it does                   |
+| ---------------------- | ------------------------------ |
+| `npm run dev`          | Start the dev server           |
+| `npm run build`        | Build for production (`.next`) |
+| `npm start`            | Serve the production build     |
+| `npm test`             | Run the tests once (Vitest)    |
+| `npm run lint`         | Lint with ESLint               |
+| `npm run format:check` | Check formatting with Prettier |
 
-The stack is React with Vite, React Router, TanStack Query, Zustand, React Hook Form with Zod, and Tailwind CSS, all in JavaScript.
+The stack is Next.js (App Router) with React, TanStack Query, Zustand, React Hook Form with Zod, and Tailwind CSS, all in JavaScript.
 
 The app is built on the Tuck the Snail design system: its colors (light and dark), type, spacing, six components (`src/components/`) and the ten mascot SVGs (`public/mascot/`). The home page has a working check-in that saves today's answer in your browser. The calm home (`/calm`, linked from the home page) is a quieter version in the low stimulation palette, ported from `images/Tuck Calm Home/`; both views share the same saved check-in. In the nav, Emotional Check opens the calm home; the Games page (`/games`) holds the shelf of cosmetic unlocks. Every page has tuckshell, a working terminal under its title: type `help` to see its commands (`checkin`, `today`, `log`, `open`, `theme`, `clear`). The Habits page (`/habits`, desktop view of `images/mockups/habit-tracking-mockup.png`) adds habits with a name, a time of day and the days they repeat, logs them day by day on a month calendar, and lists them in an expandable table where a timer can be added. The Insights page (`/insights`) looks back on your check-ins, this week and the month so far, from `images/html_mockups/pocket-shell-check-in.html`. The rest of pocket@shell (grounding, profile) isn't built yet. For which Tailwind class matches which token, see [docs/design-system/USING-IN-CODE.md](docs/design-system/USING-IN-CODE.md).
 

@@ -1,4 +1,5 @@
 import { CALM_MOODS, art } from '@/features/calm/calmMoods'
+import { EnergyMeter, energyLabel } from '@/features/calm/EnergyMeter'
 import { MoodButtons } from '@/features/calm/MoodButtons'
 import { cx } from '@/lib/faces'
 
@@ -14,6 +15,15 @@ function SavedAs({ savedAs }) {
       <span>
         saved as <b className="font-mono font-semibold">{savedAs.answer}</b>
       </span>
+      {savedAs.energy && (
+        <>
+          {' '}
+          <span>
+            · energy <b className="font-mono font-semibold">{savedAs.energy}</b>{' '}
+            <span className="text-ink-muted">({energyLabel(savedAs.energy)})</span>
+          </span>
+        </>
+      )}
       {time && (
         <>
           {' '}
@@ -60,7 +70,7 @@ function Picked({ id, savedAs }) {
   )
 }
 
-function Reply({ draft, saved }) {
+function Reply({ draft, saved, energy, onEnergyChange }) {
   const id = draft ?? saved
   const mood = CALM_MOODS[id]
   const isSaved = !draft && Boolean(saved)
@@ -69,7 +79,6 @@ function Reply({ draft, saved }) {
 
   return (
     <div
-      role="status"
       className={cx(
         'flex min-w-0 flex-col gap-12 rounded-[18px] p-16 min-[821px]:max-[1120px]:grid min-[821px]:max-[1120px]:grid-cols-[minmax(0,220px)_minmax(0,1fr)] min-[821px]:max-[1120px]:items-center',
         isSaved ? 'bg-moss-wash' : 'bg-tear-wash',
@@ -78,7 +87,7 @@ function Reply({ draft, saved }) {
       <div className="overflow-hidden rounded-sm bg-art-ground leading-none">
         <img src={art(scene)} alt={alt} className="block h-auto w-full" />
       </div>
-      <div>
+      <div role="status">
         <p className="m-0 font-mono text-mono">
           <span aria-hidden="true" className="whitespace-pre">
             {mood ? mood.face : '@_uu'}
@@ -95,6 +104,9 @@ function Reply({ draft, saved }) {
             saved on this device. pick another Tuck to change it.
           </p>
         )}
+      </div>
+      <div className="col-span-full">
+        <EnergyMeter value={energy} onChange={onEnergyChange} />
       </div>
     </div>
   )
@@ -113,6 +125,8 @@ export function CalmCheckIn({
   canSave,
   note,
   onNoteChange,
+  energy = null,
+  onEnergyChange = () => {},
 }) {
   const changing = Boolean(draft) && draft !== saved
   const hint = !picked
@@ -120,7 +134,9 @@ export function CalmCheckIn({
     : changing
       ? 'you can change it any time today'
       : canSave
-        ? 'save to add this note'
+        ? note.trim()
+          ? 'save to add this note'
+          : 'save to add your energy'
         : 'saved on this device'
 
   return (
@@ -171,7 +187,7 @@ export function CalmCheckIn({
         </div>
       </div>
 
-      <Reply draft={draft} saved={saved} />
+      <Reply draft={draft} saved={saved} energy={energy} onEnergyChange={onEnergyChange} />
     </section>
   )
 }
